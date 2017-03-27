@@ -11,6 +11,10 @@ session_start();
 <body>
 
 <form method="post" action="media_upload_process.php" enctype="multipart/form-data" >
+
+  <p style="margin:0; padding:0">
+  Media Name: <label style="color:red"></label>
+  <input type="text" name="mediaName"> <br>
  
   <p style="margin:0; padding:0">
   <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />

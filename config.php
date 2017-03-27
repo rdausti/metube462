@@ -1,7 +1,7 @@
 <?php
 
-$dbhost = "localhost";
+$dbhost = "mysql1.cs.clemson.edu";
 $dbuser = "rdausti";
 $dbpass = "cpsc462project";
-$database = "metube";
+$database = "rda-sll";
 ?>

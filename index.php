@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php
-echo "<h1> Welcome to Metube! </h1>";
+echo "<h1><font color=pink> Welcome to Metube!</font> </h1>";
 ?>
 
 <form action="login.php" method="post">
