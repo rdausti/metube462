@@ -12,7 +12,7 @@ include_once "function.php";
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 <script src="Sripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
-<!-- this is the bar at the top of the screen -->
+<!-- this is the bar at the top-->
 <?php require 'header.php'; ?>
 
 </head>
