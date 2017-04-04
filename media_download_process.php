@@ -2,12 +2,6 @@
 session_start();
 include_once "function.php";
 
-/******************************************************
-*
-* download by username
-*
-*******************************************************/
-
 $username=$_SESSION['username'];
 $mediaid=$_REQUEST['id'];
 

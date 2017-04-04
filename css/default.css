@@ -1,5 +1,21 @@
 /* You can implement your own css code*/
 
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
 #passwd_result{
 	background:#FF9900;
 	color:#FFFFFF;

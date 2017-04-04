@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <link rel="stylesheet" type="text/css" href="css/default.css" />
 <?php
 session_start();
@@ -26,21 +34,33 @@ if(isset($_POST['submit'])) {
 
  
 ?>
+
+  <body>
+
+  <!-- this is the bar at the top -->
+  <?php require 'header.php'; ?>
+
+  <br>
+
+
 	<form method="post" action="<?php echo "login.php"; ?>">
 
 	<table width="100%">
 		<tr>
-			<td  width="20%">Username:</td>
-			<td width="80%"><input class="text"  type="text" name="username"><br /></td>
+			<td  width="10%">Username:</td>
+			<td width="90%"><input class="text" style="width:200px" type="text" name="username"><br /></td>
 		</tr>
 		<tr>
-			<td  width="20%">Password:</td>
-			<td width="80%"><input class="text"  type="password" name="password"><br /></td>
+			<td  width="10%">Password:</td>
+			<td width="90%"><input class="text" style="width:200px"  type="password" name="password"><br /></td>
 		</tr>
 		<tr>
         
-			<td><input name="submit" type="submit" value="Login"><input name="reset" type="reset" value="Reset"><br /></td>
+			<td><input name="submit" style="width:200px" type="submit" value="Login"><br /></td>
 		</tr>
+                <tr>
+                        <td><input name="reset" style="width:200px" type="reset" value="Reset"></td>
+                </tr>
 	</table>
 	</form>
 

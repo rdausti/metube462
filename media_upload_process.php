@@ -2,14 +2,12 @@
 session_start();
 include_once "function.php";
 
-/******************************************************
-*
-* upload document from user
-*
-*******************************************************/
 
 $username=$_SESSION['username'];
-$mediaName= mysql_real_escape_string($_POST['mediaName']);
+$title= mysql_real_escape_string($_POST['title']);
+$tags=mysql_real_escape_string($_POST['tags']);
+$description=mysql_real_escape_string($_POST['description']);
+$category=mysql_real_escape_string($_POST['category']);
 
 //Create Directory if doesn't exist
 if(!file_exists('uploads/'))
@@ -38,8 +36,8 @@ if(!file_exists($dirfile))
 				else /*Successfully upload file*/
 				{
 					//insert into media table
-					$insert = "insert into media(mediaid, filename,username,type, path,mediaName)".
-							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$username','".$_FILES["file"]["type"]."', '$upfile','$mediaTitle')";
+					$insert = "insert into media(mediaid, filename,username,type, path,title,tags,description,category)".
+							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$username','".$_FILES["file"]["type"]."', '$upfile','$title','$tags','$description','$category')";
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
 					$result="0";
@@ -52,6 +50,15 @@ if(!file_exists($dirfile))
 			}
 		}
 	}
+       // $channelid=$_POST['channels'];
+       // if($channelid != "none") {
+         // $queryMedia = "select mediaid from media where username='$username' order by mediaid desc;";
+         // $resultMedia = mysql_query($mediaquery);
+         // $resultMedia_row = mysql_fetch_row($media_result);
+         // $mediaid=$resultMedia_row[0];
+         // $queryChannel = "insert into channelmedia(mapid,channelid,mediaid) values (NULL,$channelid, $mediaid);";
+         // $channelresult = mysql_query($queryChannel);
+       // }
 	
 	//You can process the error code of the $result here.
 ?>
