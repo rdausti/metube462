@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body bgcolor=#00cc66>
 
 <div>
 
@@ -27,9 +27,7 @@ if(isset($_GET['id'])) {
 	$mediaresult = mysql_query( $mediaquery );
         $resultrow = mysql_fetch_row($mediaresult);
 	
-	//updateMediaTime($_GET['id']);
-	
-	$filename=$resultrow[0];   ////0, 4, 2
+	$filename=$resultrow[0]; 
 	$path=$resultrow[4];
         $title=$resultrow[5];
         $description=$resultrow[7]; 

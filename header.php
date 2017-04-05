@@ -1,8 +1,11 @@
+
+<body>
+
 <?php
 include_once "function.php";
 
   //IF THE USER IS LOGGED IN THEN THE HEARD WILL HAVE THE LINKS
-  //METUBE, media, users, seach bar, messages, profile, and logout
+  //METUBE, media, users, inbox, profile, logout, and search bar
   if(isset($_SESSION['username'])) { 
 
     $username = $_SESSION['username'];
@@ -13,104 +16,140 @@ include_once "function.php";
 
     ?>
 
-  <!-- profile link -->
-    <form method="POST" action="profile.php" id="profile">
-    <input type="hidden" name="username" value="<?php echo $username;?>"/>
+    <form>
+      <table width="100%" bgcolor="#ff007f">
+        <div>
+          <tr>
+            <td align="center">
+              <!-- METUBE button that takes user to browse.php -->
+              <a href="browse.php" style="color:#ffffff"> 
+                METUBE 
+              </a>
+            </td>
+            <td align="center">
+              <!-- Media button that takes the user to browse.php -->
+              <a href="browse.php" style="color:#ffffff"> 
+                Media 
+              </a>
+            </td>
+            <td align="center">
+              <!-- Users button that takes the user to accounts.php -->
+              <a href="accounts.php" style="color:#ffffff"> 
+                Users 
+              </a>
+            </td>
+            <td style="width:500px"> 
+              <!-- Empty cell -->
+              &nbsp;
+            </td>
+            <td align="right" style="width:50px">
+              <!-- Inbox button that take the user to their inbox -->
+              <a href="inbox.php" style="color:#ffffff"> 
+                Inbox 
+              </a>
+            </td>
+            <td align="right" style="width:50px">
+              <!-- Proflie button that takes the user to their proflie -->
+              <a onclick="goToProflie()" style="color:#ffffff"> 
+                Proflie
+              </a>
+            </td>
+            <td>
+              <!-- Logout button that allows the user to log out -->
+              <a href="logout.php" style="color:#ffffff"> 
+                Logout 
+              </a>
+            </td>
+            <td align="right" style="width:200px">
+              <!-- Search bar that will open searchMedia.php -->
+              <form method="post" role="serach" action="searchMedia.php">
+                <div>
+                  <input type="text" style="width:200px" name="serachWords" placeholder="Search">
+                </div>
+              </form>
+            </td>
+            <td align="right" style="width:10px">
+              <button type="submit"> 
+                Submit 
+              </button>
+            </td>
+          </tr>
+        </div>
+      </table>
     </form>
 
-  <nav background-color=#CC0066>
-    <div>
-      <div>
-        <button type="button"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span>Toggle navigation</span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <!-- METUBE link that goes to browse.hph -->
-        <a href="browse.php">METUBE</a>
-      </div>
-      <div id="bs-example-navbar-collapse-1">
-        <ul>
-          <!-- Media link that goes to browse.php -->
-          <li class=""><a href="browse.php">Media<span></span></a></li>
-        </ul>
-        <ul>
-          <!-- Users link that goes to accounts.php -->
-          <li><a href="accounts.php">Users<span></span></a></li>
-        </ul>
-        <!-- Search bar that will open serachMedia.php -->
-        <form method="post" role="search" action="searchMedia.php">
-          <div>
-            <input type="text" name="searchWords" placeholder="Search">
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        <ul>
-          <!-- Messages link that will open up the users inbox -->
-          <li><a href="inbox.php">Messages
-          <?php if($messagecount != 0) {?>
-            <span><?php echo $messagecount; ?></span>
-          <?php } ?>
-          <!-- Profile link that will take the user to their profile -->
-          <li style="cursor:pointer; cursor:hand?"><a onclick="goToProfile()">Profile</a></li>
-          <!-- Logout link that will take them to logout.php -->
-          <li><a href="logout.php">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <script type="text/javascript">
+    <script type="text/javascript">
     function goToProfile() {
       document.getElementById("profile").submit();
     }
-  </script>
-
-<?php }
+    </script>
+  
+  <?php      
   //IF THE THEY ARE NTO LOGGED IN THEN THIS IS WHAT WILL BE ON THE HEADER BAR
-  //METUBE, Media, Users, Search Bar, Register, and Login 
-  else { ?>
+  //METUBE, Media, Users, Login, Register, and Search Bar
+  } else { ?>
 
-  <nav>
-    <div>
+    <form>
       <div>
-        <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span>Toggle navigation</span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-	<!-- METUBE link that will open up browse.php -->
-        <a href="browse.php">MeTube</a>
-
+        <table width="100%" bgcolor="#ff007f" cellpadding="10">
+          <tr>
+            <td align="center">
+              <!-- METUBE button that takes user to browse.php -->
+              <a href="browse.php" style="color:#ffffff"> 
+                METUBE 
+              </a>
+            </td>
+            <td align="center">
+              <!-- Media button that takes the user to browse.php -->
+              <a href="browse.php" style="color:#ffffff"> 
+                Media 
+              </a>
+            </td>
+            <td align="center">
+              <!-- Users button that takes the user to accounts.php -->
+              <a href="login_error.php" style="color:#ffffff"> 
+                Users 
+              </a>
+            </td>
+            <td style="width:500px"> 
+              <!-- Empty cell -->
+              &nbsp;
+            </td>
+            <td style="width:50px"> 
+              <!-- Empty cell -->
+              &nbsp;
+            </td>
+            <td align="right" style="width:50px">
+              <!-- Login button that takes the user to login.php -->
+              <a href="login.php" style="color:#ffffff"> 
+                Login 
+              </a>
+            </td>
+            <td align="right" style="width:50px"> 
+              <!-- Register button that takes the user to the regester.php -->
+              <a href="register.php" style="color:#ffffff"> 
+                Register 
+              </a>
+            </td>
+            <td align="right" style="width:200px">
+              <!-- Search bar that will open searchMedia.php -->
+              <form method="post" role="serach" action="searchMedia.php">
+                <div>
+                  <input type="text" style="width:200px" name="serachWords" placeholder="Search">
+                </div>
+              </form>
+            </td>
+            <td align="right" style="width:10px">
+              <button type="submit"> 
+                Submit 
+              </button>
+            </td>
+          </tr>
+        </table>
       </div>
+    </form>
+  
+  <?php } ?>
 
-      <div id="bs-example-navbar-collapse-1">
-        <ul>
-          <!-- Media link that will open up browse.php -->
-          <li><a href="browse.php">Media<span></span></a></li>
-        </ul>
-        <ul>
-          <!-- Users link that will open a login error page that will tell them they need to login before they can view the users -->
-          <li><a href="login_error.php">Users<span></span></a></li>
-        </ul>
-        <!-- Search bar that will open up searchMedia.php -->
-        <form method="post" role="search" action="searchMedia.php">
-          <div>
-            <input type="text" name="searchWords" placeholder="Search">
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        <ul>
-          <!-- Register button that will allow the user to register as a user -->
-          <li><a href="register.php">Register</a></li>
-          <!-- Login button that will allow a current user to login -->
-          <li><a href="login.php">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<?php } ?>
-
+</body>
+</html>

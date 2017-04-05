@@ -17,7 +17,7 @@ include_once "function.php";
 
 </head>
 
-<body>
+<body bgcolor=#00cc66>
 
   <div>
   
@@ -33,7 +33,6 @@ include_once "function.php";
       $sendTo = $_POST['sendTo'];
       $content = mysql_real_escape_string($_POST['content']);
       $sendFrom = $_POST['sender'];
-
       $insert = "insert into message(messageid, content, sender, receiver, isItRead) values(NULL, '$content', '$sendFrom', '$sendTo', FALSE)";
       $insertResult = mysql_query($insert) or die("Insert into Messages error". mysql_error());
     }
@@ -60,10 +59,19 @@ include_once "function.php";
 
           <tr>
             <td style="width:8%">
-              <label><?php echo $messageSender;?>:</label>
+              <label>
+                <font color=#ffffff>
+                  <?php echo $messageSender;?>
+                  :
+                </font>
+              </label>
             </td>
             <td>
-              <label><?php echo $body;?></label>
+              <label>
+                <font color=#ffffff>
+                  <?php echo $body;?>
+                </font>
+              </label>
             </td>
           </tr>
           <?php
@@ -76,7 +84,11 @@ include_once "function.php";
         <tr>
           <td>
             <form method="post" action="">
-              <label>Send to <?php echo $receiver?>:</label>
+              <label>
+                <font color=#ffffff>
+                  Send to <?php echo $receiver?>:
+                </font>
+              </label>
               <br><br>
               <textarea rows="6" style="width:800px" name="content"></textarea>
               <br><br>
@@ -97,3 +109,4 @@ include_once "function.php";
   $messageesult = mysql_query($updatemessage) or die("Could not query message: <br />". mysql_error());
   ?>
 </body>
+</html>

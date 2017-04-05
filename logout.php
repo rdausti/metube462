@@ -7,22 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/default.css" />
   
-  <!-- this is the bar on top of the screen -->
-  <?php require 'header.php'; ?>
-
 </head>
-<body>
 
-<?php
-session_start();
-session_destroy();
-header("refresh:2; url=index.php");
+<body bgcolor=#00cc66>
 
-?>
+	<!-- this is the bar on top of the screen -->
+	<?php require 'header.php'; ?>
 
-<p class="text-primary">
-  You have logged out. Please vist MeTube again.
-</p>
+	<?php
+	session_start();
+	session_destroy();
+	header("refresh:2; url=index.php");
+	?>
 
+	<p class="text-primary">
+		<font color=#ffffff>
+	  		You have logged out. Please vist MeTube again.
+	  	</font>
+	</p>
 </body>
 </html>

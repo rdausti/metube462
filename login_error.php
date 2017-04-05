@@ -4,16 +4,16 @@
   <title>Login Error Message</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" type="text/css" href="css/default.css" />
-
-  <?php require 'header.php'; ?>
-
 </head>
-<body>
-  <?php header( "refresh:2; url= index.php" ); ?>
+<body bgcolor=#00cc66>
+	<?php require 'header.php'; ?>
+	<?php header( "refresh:2; url= index.php" ); ?>
 
-  <p class="text-primary">
-    You must be logged in to view users. Please login and try again.
-  </p>
+	<p class="text-primary">
+		<font color=#ffffff>
+			You must be logged in to view users. Please login and try again.
+		</font>
+	</p>
 
 </body>
 </html>

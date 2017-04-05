@@ -14,10 +14,11 @@
 <!-- this is the bar at the top -->
 <?php require 'header.php'; ?>
 
-
-<?php
-echo "<h1 align=center><font color=#ff007f> Welcome to Metube!</font> </h1>";
-?>
+	<h1 align=center>
+		<font color=#ffffff> 
+			Welcome to Metube!
+		</font> 
+	</h1>
 
 </body>
 </html>

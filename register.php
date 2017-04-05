@@ -9,7 +9,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/default.css" />
 
-<body>
+<body bgcolor=#00cc66>
+<?php require 'header.php'; ?>
 
 <?php
 session_start();
@@ -24,7 +25,6 @@ if(isset($_POST['submit'])) {
 	else {
 		$check = user_exist_check(ucfirst($_POST['username']), $_POST['password1'], $_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['email']);	
 		if($check == 1){
-			//echo "Rigister succeeds";
 			$_SESSION['username']=$_POST['username'];
 			header('Location: browse.php');
 		}
@@ -39,64 +39,105 @@ if(isset($_POST['submit'])) {
   <table>
     <tr>
       <td valign="top">
-        <label for="inputUser">Username:</label>
+        <label for="inputUser">
+          <font color=#ffffff>
+            Username:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="text" style="width:200px" name="username"> <br><br>
+        <input type="text" style="width:200px" name="username"> 
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-	<label for="inputPass">Create Password:</label>
+        <label for="inputPass">
+          <font color=#ffffff>
+            Create Password:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="password" style="width:200px" name="password1"> <br><br>
+        <input type="password" style="width:200px" name="password1"> 
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-	<label for="inputRepeatPass">Repeat password:</label>
+        <label for="inputRepeatPass">
+          <font color=#ffffff>
+            Repeat password:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="password" style="width:200px" name="password2"> <br><br>
+        <input type="password" style="width:200px" name="password2"> 
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-        <label for="inputFirst">First Name:</label>
+        <label for="inputFirst">
+          <font color=#ffffff>
+            First Name:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="text" style="width:200px" name="firstname"> <br><br>
+        <input type="text" style="width:200px" name="firstname">
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-        <label for="inputLast">Last Name:</label>
+        <label for="inputLast">
+          <font color=#ffffff>
+            Last Name:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="text" style="width:200px" name="lastname"> <br><br>
+        <input type="text" style="width:200px" name="lastname"> 
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-        <label for="gender">Gender:</label>
+        <label for="gender">
+          <font color=#ffffff>
+            Gender:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="radio" value="male" name="gender">Male
-        <input type="radio" value="female" name="gender">Female <br><br>
+        <input type="radio" value="male" name="gender">
+          <font color=#ffffff>
+            Male
+          </font>
+        <input type="radio" value="female" name="gender">
+          <font color=#ffffff>
+            Female
+          </font>
+        <br><br>
       </td>
     </tr>
     <tr>
       <td valign="top">
-        <label for="email">Email:</label>
+        <label for="email">
+          <font color=#ffffff>
+            Email:
+          </font>
+        </label>
       </td>
       <td>
-        <input type="text" style="width:200px" name="email"> <br><br>
+        <input type="text" style="width:200px" name="email"> 
+        <br><br>
       </td>
     </tr>
     <tr>
       <td>
-	<input name="submit" type="submit" value="Submit">
+        <input name="submit" type="submit" value="Submit">
       </td>
     </tr>
   </table>
