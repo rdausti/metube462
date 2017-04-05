@@ -32,21 +32,21 @@ function saveDownload(id)
 	<?php 
 	//if a user with a username hasn't started a session yet
 	if(!isset($_SESSION['username'])) { ?>
-	  <h2>
-	  	<font color=#ffffff>
+	  <h2 align="center">
+	  	<font style="color:#ffffff; font-family:verdana;">
 	  		Welcome
 	  	</font>
 	  </h2>
 	<?php } 
 	//if a user with a username has started a session 
 	else { ?>
-	  <h2>
-	  	<font color=#ffffff>
+	  <h2 align="center">
+	  	<font style="color:#ffffff; font-family:verdana;">
 	  		Welcome <?php echo $_SESSION['username'];?>
 	  	</font>
 	  </h2>
 
-	  <a href='media_upload.php'  style="color:#ffffff;">
+	  <a href='media_upload.php' style="color:#ffffff; font-family:verdana;" >
 	  	Upload File
 	  </a>
 	  
@@ -69,9 +69,15 @@ function saveDownload(id)
 		}
 	?>
 	    
-    <div style="background:#ff007f;color:#FFFFFF; width:100%;">
-    	Uploaded Media
-    </div>
+    <table style="background:#003366; width:100%;" cellpadding="10">
+    	<tr>
+    		<td>
+    			<font style="color:#ffffff; font-family:verdana;">
+    				Uploaded Media
+    			</font>
+    		</td>
+    	</tr>
+    </table>
 
 	<table width="100%" cellpadding="5" cellspacing="0">
 		<?php
@@ -81,21 +87,21 @@ function saveDownload(id)
 			$filenpath = $rowresult[4];
 		?>
         <tr valign="top">			
-			<td>
-				<font color=#ffffff>
+			<td  width="40px">
+				<font style="color:#ffffff; font-family:verdana;">
 					<?php echo $mediaid;?>
 				</font>
 			</td>
             <td>
-	            <a href="media.php?id=<?php echo $mediaid;?>" target="_blank">
-	            	<font color=#ffffff>
+	            <a href="media.php?id=<?php echo $mediaid;?>" target="_blank" style="text-decoration:none">
+	            	<font style="color:#ffffff; font-family:verdana;">
 	            		<?php echo $filename;?>
 	            	</font>
 	            </a> 
             </td>
-            <td>
-	            <a href="<?php echo $filenpath;?>" target="_blank" onclick="javascript:saveDownload(<?php echo $filenpath;?>);">
-	            	<font color=#ffffff>
+            <td align="center" style="background:#00994c" width="100px">
+	            <a href="<?php echo $filenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $filenpath;?>);">
+	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
 	            </a>

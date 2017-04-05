@@ -10,7 +10,7 @@
 	<?php header( "refresh:2; url= index.php" ); ?>
 
 	<p class="text-primary">
-		<font color=#ffffff>
+		<font style="color:#ffffff; font-family:verdana;">
 			You must be logged in to view users. Please login and try again.
 		</font>
 	</p>

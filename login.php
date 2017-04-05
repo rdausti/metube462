@@ -43,7 +43,7 @@ if(isset($_POST['submit'])) {
 		<table width="100%">
 			<tr>
 				<td width="10%">
-					<font color=#ffffff>
+					<font style="color:#ffffff; font-family:verdana;">
 						Username:
 					</font>
 				</td>
@@ -54,7 +54,7 @@ if(isset($_POST['submit'])) {
 			</tr>
 			<tr>
 				<td width="10%">
-					<font color=#ffffff>
+					<font style="color:#ffffff; font-family:verdana;">
 						Password:
 					</font>
 				</td>

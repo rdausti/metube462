@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="inputUser">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Username:
           </font>
         </label>
@@ -53,7 +53,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="inputPass">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Create Password:
           </font>
         </label>
@@ -66,7 +66,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="inputRepeatPass">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Repeat password:
           </font>
         </label>
@@ -79,7 +79,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="inputFirst">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             First Name:
           </font>
         </label>
@@ -92,7 +92,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="inputLast">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Last Name:
           </font>
         </label>
@@ -105,18 +105,18 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="gender">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Gender:
           </font>
         </label>
       </td>
       <td>
         <input type="radio" value="male" name="gender">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Male
           </font>
         <input type="radio" value="female" name="gender">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Female
           </font>
         <br><br>
@@ -125,7 +125,7 @@ if(isset($_POST['submit'])) {
     <tr>
       <td valign="top">
         <label for="email">
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Email:
           </font>
         </label>
