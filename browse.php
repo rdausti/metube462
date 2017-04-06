@@ -28,7 +28,7 @@ function saveDownload(id)
 
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
 	<?php 
 	//if a user with a username hasn't started a session yet
 	if(!isset($_SESSION['username'])) { ?>
@@ -46,8 +46,10 @@ function saveDownload(id)
 	  	</font>
 	  </h2>
 
-	  <a href='media_upload.php' style="color:#ffffff; font-family:verdana;" >
-	  	Upload File
+	  <a href='media_upload.php' style="text-decoration:none; background:#00994c;">
+	  	<font style="color:#ffffff; font-family:verdana;">
+	  		Upload File
+	  	</font>
 	  </a>
 	  
 	  <div id='upload_result'>

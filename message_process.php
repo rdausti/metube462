@@ -17,7 +17,7 @@ include_once "function.php";
 
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
 
   <div>
   
@@ -48,7 +48,11 @@ include_once "function.php";
     <br>
     <fieldset>
       <table style="width:100%">
-        <legend>Messages with <?php echo $receiver ?></legend>
+        <legend>
+          <font style="color:#ffffff; font-family:verdana;">
+            Messages with <?php echo $receiver ?>
+          </font>
+        </legend>
         <?php
         while($oneMessage = mysql_fetch_row($messageresult)) {
           $messageid = $oneMessage[0];
@@ -60,7 +64,7 @@ include_once "function.php";
           <tr>
             <td style="width:8%">
               <label>
-                <font color=#ffffff>
+                <font style="color:#ffffff; font-family:verdana;">
                   <?php echo $messageSender;?>
                   :
                 </font>
@@ -68,7 +72,7 @@ include_once "function.php";
             </td>
             <td>
               <label>
-                <font color=#ffffff>
+                <font style="color:#ffffff; font-family:verdana;">
                   <?php echo $body;?>
                 </font>
               </label>
@@ -78,14 +82,14 @@ include_once "function.php";
         } ?>
       </table>
     </fieldset>
-
+    <br><br>
     <fieldset>
       <table>
         <tr>
           <td>
             <form method="post" action="">
               <label>
-                <font color=#ffffff>
+                <font style="color:#ffffff; font-family:verdana;">
                   Send to <?php echo $receiver?>:
                 </font>
               </label>

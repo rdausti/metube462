@@ -20,19 +20,20 @@ session_start();
 ?>
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
+  <br><br>
 
   <div>
     <form method="post" action="media_upload_process.php" enctype="multipart/form-data" >
       <fieldset>
         <legend>
-          <font color=#ffffff>
+          <font style="color:#ffffff; font-family:verdana;">
             Upload Media
           </font>
         </legend>
         <div>
           <label for="title">
-            <font color=#ffffff> 
+            <font style="color:#ffffff; font-family:verdana;">
               Title:
             </font>
           </label>
@@ -44,7 +45,7 @@ session_start();
         <br>
         <div>
           <label for="description">
-            <font color=#ffffff>
+            <font style="color:#ffffff; font-family:verdana;">
               Description:
             </font>
           </label>
@@ -55,7 +56,7 @@ session_start();
         <br>
         <div>
           <label for="category">
-            <font color=#ffffff>
+            <font style="color:#ffffff; font-family:verdana;">
               Category:
             </font>
           </label>
@@ -98,7 +99,7 @@ session_start();
         <br>
         <div>
           <label>  
-            <font color=#ffffff>
+            <font style="color:#ffffff; font-family:verdana;">
               Add a Media: 
               <label>
                 <em> 
@@ -109,7 +110,7 @@ session_start();
             <br>
           </lable>
           <div>
-            <font color=#ffffff>
+            <font style="color:#ffffff; font-family:verdana;">
               <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
               <input  name="file" type="file" size="50" />
               <br><br>

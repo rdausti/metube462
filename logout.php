@@ -9,7 +9,7 @@
   
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
 
 	<!-- this is the bar on top of the screen -->
 	<?php require 'header.php'; ?>
@@ -21,7 +21,7 @@
 	?>
 
 	<p class="text-primary">
-		<font color=#ffffff>
+		<font style="color:#ffffff; font-family:verdana;">
 	  		You have logged out. Please vist MeTube again.
 	  	</font>
 	</p>

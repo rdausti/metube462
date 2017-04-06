@@ -7,13 +7,15 @@ include_once "function.php";
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Profile</title>
+<title>
+  Profile
+</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/default.css" />
   
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
 
 <!-- this is the bar on the top of the screen -->
 <?php require 'header.php'; ?>
@@ -57,143 +59,192 @@ include_once "function.php";
 
     //if the user is looking at their profile
     if($_SESSION['username'] == $username) { ?>
-      <div style="background:#ff007f;color:#ffffff; width:100%; margin:auto; padding-top: 10px; padding-bottom: 10px;">
-        <table style="width:100%; text-align:center">
-          <tr>
-            <td>
-              <a href="./channels.php" style="font-size:25px;color:#ffffff">
+      
+      <br><br>
+
+      <table style="width:100%; text-align:center; background:#003366; color:#ffffff; width:100%; margin:auto;" cellpadding="10">
+        <tr>
+          <td>
+            <a href="./channels.php" style="text-decoration:none">
+              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
                 My Channels
-              </a>
-            </td>
-            <td>
-              <a href="./my_media.php" style="font-size:25px;color:#ffffff">
+              </font>
+            </a>
+          </td>
+          <td>
+            <a href="./my_media.php" style="text-decoration:none">
+              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
                 My Media
-              </a>
-            </td>
-            <td>
-              <a href="./update_profile.php" style="font-size:25px;color:#ffffff">
+              </font>
+            </a>
+          </td>
+          <td>
+            <a href="./update_profile.php" style="text-decoration:none">
+              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
                 Update Profile
-              </a>
-            </td>
-          </tr>
-        </table>
-      </div><br>
+              </font>
+            </a>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <h1>
+        <font style="color:#ffffff; font-family:verdana;">
+          <?php echo $username ?>
+        </font>
+      </h1>
+
+      <h3>
+        <font style="color:#ffffff; font-family:verdana;">
+          Name:
+          <?php 
+            echo " ";
+            echo $firstname;
+            echo " ";
+            echo $lastname; 
+          ?>
+        </font>
+      </h3>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Gender:
+          <?php 
+            echo " ";
+            echo $gender; 
+          ?>
+        </font>
+      </h4>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Email: 
+          <?php 
+            echo " ";
+            echo $email; 
+          ?>
+        </font>
+      </h4>
 
     <?php
     }
     //if they are looking at someone elses profile
     else { ?>
 
-    <a style="cursor:pointer; curson:hand;"onclick="userToProfile()">
-      Channels
-    </a>
+      <h1>
+        <font style="color:#ffffff; font-family:verdana;">
+          <?php 
+          echo $username;
+          ?>
+        </font>
+      </h1>
 
+      <h3>
+        <font style="color:#ffffff; font-family:verdana;">
+          Name:
+          <?php 
+            echo " ";
+            echo $firstname;
+            echo " ";
+            echo $lastname; 
+          ?>
+        </font>
+      </h3>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Gender: 
+          <?php 
+            echo " ";
+            echo $gender; 
+          ?>
+        </font>
+      </h4>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Email:
+          <?php 
+            echo " ";
+            echo $email; 
+          ?>
+        </font>
+      </h4>
+
+      <a style="cursor:pointer; curson:hand;" onclick="userToProfile()">
+        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
+          <?php 
+          echo $username;
+          echo "'s";
+          ?>
+          Channels
+        </font>
+      </a>
+      <br>
+      <br>
+
+      <a style="cursor:pointer; cursor:hand;"onclick="sendMessage()">
+        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
+          Send Message To 
+          <?php 
+            echo $username;
+          ?>
+        </font>
+      </a>
+      <br>
     <?php
+    }
+
+    $mediaquery = "select * from media where username='$username'";
+    $mediaresult = mysql_query($mediaquery);
+    if(!$mediaresult) {
+      exit("Could not get information from Media table: <br />". mysql_error());
     } ?>
 
-    <!-- print the user's username, firstname, lastname, gender and email -->
-    <h1>
-      <font color=#ffffff>
-        <?php echo $username ?>
-      </font>
-    </h1>
-
-    <h3>
-      <font color=#ffffff>
-        <?php 
-          echo $firstname;
-          echo " ";
-          echo $lastname; 
-        ?>
-      </font>
-    </h3>
-
-    <h4>
-      <font color=#ffffff>
-        <?php echo $gender; ?>
-      </font>
-    </h4>
-
-    <h4>
-      <font color=#ffffff>
-        <?php echo $email; ?>
-      </font>
-    </h4>
-
-  <?php
-  }
-
-  //if they are logged in and looking at someone elses profile
-  if($_SESSION['username'] != $username and isset($_SESSION['username'])) { ?>
-    <a style="cursor:pointer; cursor:hand;"onclick="sendMessage()">
-      <font color=#ffffff>
-        Send Message
-      </font>
-    </a>
-  <?php
-  } 
-
-  //if they are logged in and lookin at their profile 
-  else { ?>
-    <a style="cursor:pointer; cursor:hand;"onclick="userToProfile()">
-      <font color=#ffffff>
-        Channels
-      </font>
-    </a>
-
-    <h2>
-      <font color=#ffffff>
-        <?php echo $username; ?>
-      </font>
-    </h2>
-
-    <h3>
-      <font color=#ffffff>
-        <?php echo $firstname; ?>
-        &nbsp;
-        <?php echo $lastname; ?> 
-      </font>
-    </h3>
-
-  <?php
-  } 
-
-  $mediaquery = "select * from media where username='$username'";
-  $mediaresult = mysql_query($mediaquery);
-  if(!$mediaresult) {
-    exit("Could not get information from Media table: <br />". mysql_error());
-  } ?>
-
-  <br>
-  <div style="background:#ff007f;color:#ffffff; width:100%; margin:auto; text-align:center; padding-top: 10px; padding-bottom: 10px;">
-    <?php echo $username;?>'s Media
-  </div>
-  <table style="width:100%;" class="table table-hover">
-    <?php
-    while($rowresult = mysql_fetch_row($mediaresult)) {
-      $mediaid = $rowresult[3];
-      $filename = $rowresult[0];
-      $path = $rowresult[4];
-      $title = $rowresult[5]; ?>
-      <tr> 
-        <td style="text-align:left">
-          <a href="media.php?id=<?php echo $mediaid;?>" target="_blank">
-            <font color=#ffffff>
-              <?php echo $title;?>
-            </font>
-          </a>
-        </td>
-        <td style="text-align:right">
-          <a href="<?php echo $path;?>" target="_blank" onclick="javascript:saveDownload(<?php echo $success_row[4];?>);">
-            <font color=#ffffff>
-              Download
-            </font>
-          </a>
+    <br>
+    <table style="background:#003366; width:100%; margin:auto; text-align:center;" cellpadding="10">
+      <tr>
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            <?php 
+              echo $username;
+              echo "'s";
+            ?>
+            Media
+          </font>
         </td>
       </tr>
-    <?php } ?>
-    <br>
-  </table>
+    </table>
+    <table style="width:100%;" class="table table-hover">
+      <?php
+      while($rowresult = mysql_fetch_row($mediaresult)) {
+        $mediaid = $rowresult[3];
+        $filename = $rowresult[0];
+        $path = $rowresult[4];
+        $title = $rowresult[5]; ?>
+        <tr> 
+          <td style="text-align:left">
+            <a href="media.php?id=<?php echo $mediaid;?>" style="text-decoration:none" target="_blank">
+              <font style="color:#ffffff; font-family:verdana;">
+                <?php 
+                  echo $title;
+                ?>
+              </font>
+            </a>
+          </td>
+          <td style="background:#00994c; text-align:center" width="100px">
+            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $success_row[4];?>);">
+              <font style="color:#ffffff; font-family:verdana;">
+                Download
+              </font>
+            </a>
+          </td>
+        </tr>
+      <?php } ?>
+      <br>
+    </table>
+  <?php } ?>  
   </div>
 </body>
 </html>

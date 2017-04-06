@@ -35,6 +35,7 @@ if(isset($_POST['submit'])) {
 }
 
 ?>
+<br><br>
 <form action="register.php" method="post">
   <table>
     <tr>

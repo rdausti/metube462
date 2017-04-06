@@ -8,7 +8,9 @@ include_once "function.php";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/default.css" />
-<title>Messages Inbox</title>
+<title>
+  Messages Inbox
+</title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 
 <!-- bar on top of screen -->
@@ -16,7 +18,7 @@ include_once "function.php";
 
 </head>
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
   <?php
   //getting the username
   $username = $_SESSION['username'];
@@ -30,11 +32,11 @@ include_once "function.php";
   <div>
     <fieldset>
       <legend> 
-        <font color=#ffffff>
+        <font style="color:#ffffff; font-family:verdana;">
           Messages Inbox 
         </font>
       </legend>
-      <table cellpadding="10">
+      <table cellpadding="5">
         <?php
         //while the current sender still has a message  
         while ($single_message = mysql_fetch_row($userresults)) {
@@ -73,7 +75,7 @@ include_once "function.php";
               </form>
             </td>
           </tr>
-          <?php
+        <?php
         }
         ?>
       </table>
@@ -84,9 +86,9 @@ include_once "function.php";
     <form method="post" action="message_process.php">
       <table>
         <tr>
-          <td width="10%"> 
+          <td width="15%"> 
             <label for="sendTo">
-              <font color=#ffffff>
+              <font style="color:#ffffff; font-family:verdana;">
                 Send Message To: 
               </font>
             </label>
