@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W#C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1?DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1?DTD/xhtml1-transitional.dtd">
 
 <?php
 session_start();
@@ -76,7 +76,7 @@ include_once "function.php";
             </a>
           </td>
           <td>
-            <a href="./my_favorites.php" style="text-decoration:none">
+            <a href="./favorites.php" style="text-decoration:none">
               <font style="color:#ffffff; font-size:20px; font-family:verdana;">
                 My Favorites
               </font>
@@ -243,7 +243,7 @@ include_once "function.php";
             </font>
           </td>
           <td style="text-align:left">
-            <a href="media.php?id=<?php echo $mediaid;?>" style="text-decoration:none" target="_blank">
+            <a href="media.php?id=<?php echo $mediaid;?>" style="text-decoration:none" target="_self">
               <font style="color:#ffffff; font-family:verdana;">
                 <?php 
                   echo $filename;

@@ -106,7 +106,7 @@
 				</font>
 			</td>
             <td>
-	            <a href="media.php?id=<?php echo $mediaid;?>" target="_blank" style="text-decoration:none">
+	            <a href="media.php?id=<?php echo $mediaid;?>" target="_self" style="text-decoration:none">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		<?php echo $filename;?>
 	            	</font>

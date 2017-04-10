@@ -7,7 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/default.css" />
-<title>Media</title>
+<title>
+  Media
+</title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
@@ -172,9 +174,9 @@
       <div>
         <?php
         echo "<h4>Favorites: </h4><br>";
-       // $favoritequery = "select * from favorites where mediaid=$mediaid and username='$username';";
-       // $rows = mysql_query($favoritequery);
-       // $favorite = mysql_num_rows($rows);
+        $favoritequery = "select * from favorite where mediaid=$mediaid and username='$username';";
+        $rows = mysql_query($favoritequery);
+        $favorite = mysql_num_rows($rows);
        // $channelquery="select channeltitle, channels.channelid, username from channelmedia join channels where channels.channelid=channelmedia.channelid and mediaid=$mediaid;";
        // $channel=mysql_query($channelquery);
        // $singlechannel=mysql_fetch_row($channel);
@@ -190,41 +192,41 @@
 
         <script type="text/javascript">
           function changeAction(type) {
-            if(type=="unF") {
+            if(type=="unfavorite") {
               document.getElementById('button form').action="unfavorite_process.php";
             }
-            else if (type=="F") {
-              document.getElementsById('button form').action="favorite_process.php";
+            else if (type=="favorite") {
+              document.getElementById('button form').action="favorite_process.php";
             }
-            else if (type=="unS") {
-              document.getElementsById('button form').action="unsubscribe_process.php";
+            else if (type=="unsubscribe") {
+              document.getElementById('button form').action="unsubscribe_process.php";
             }
-            else if (type=="S") {
-              document.getElementsById('button form').action="subscribe_process.php";
+            else if (type=="subscribe") {
+              document.getElementById('button form').action="subscribe_process.php";
             }
           }
         </script>
         <form method="post" id="button form" action="" enctype="multipart/form-data">
           <?php
-          //if($favorite) { ?>
-            <!-- <input onclick="changeAction('unF')" type="submit" value="Unfavorite" name="unfavorite" />
-            <input type="hidden" name="mediaid" value="<?php echo $mediaid?>"> -->
+          if($favorite) { ?>
+            <input onclick="changeAction('unfavorite')" type="submit" value="Unfavorite" name="unfavorite">
+            <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
           <?php
-         // }
-         // else { ?>
-           <!-- <input onclick="changeAction('F')" type="submit" value="Favorite" name="favorite" />
-            <input type="hidden" name="mediaid" value="<?php echo $mediaid?>"> -->
+          }
+          else { ?>
+            <input onclick="changeAction('favorite')" type="submit" value="Favorite" name="favorite">
+            <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
           <?php
-         // }
+          }
 
          // if(isset($channelid) and $username != $channelowner) {
            // if($is_subbed) { ?>
-             <!-- <input onclick="changeAction('unS')" type="submit" value="Unsubscribe from <?php echo $channeltitle; ?>" name="unsubscribe" />
+             <!-- <input onclick="changeAction('unsubscribe')" type="submit" value="Unsubscribe from <?php echo $channeltitle; ?>" name="unsubscribe" />
               <input type="hidden name="channelid" value="<?php echo $channelid?>">
             //<?php
             //}
               //else { ?>
-                <input onclick="changeAction('S')" type="submit" value="Subscribe to <?php echo $channeltitle; ?>" name="subscribe" />
+                <input onclick="changeAction('subscribe')" type="submit" value="Subscribe to <?php echo $channeltitle; ?>" name="subscribe" />
                 <input type="hidden" name="channelid" value="<?php echo $channelid?>">
               //<?php
              // }
