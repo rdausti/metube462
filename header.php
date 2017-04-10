@@ -46,22 +46,35 @@ include_once "function.php";
             <!-- Empty cell -->
             &nbsp;
           </td>
-          <td align="right" style="width:50px">
+          <td align="right" style="width:90px">
             <!-- Inbox button that take the user to their inbox -->
             <a href="inbox.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
-                Inbox 
+                <?php if($messagecount != 0) { ?>
+                  <span>
+                    <?php 
+                      echo "Inbox";
+                      echo " (";
+                      echo $messagecount; 
+                      echo ")"; ?>
+                  </span>
+                <?php } 
+                else { ?>
+                  <span>
+                    <?php echo "Inbox"; ?>
+                  </span>
+                <?php } ?>
               </font>
             </a>
           </td>
           <td align="right" style="width:50px">
             <!-- Proflie button that takes the user to their proflie -->
-            <form method="post" id="usernameForm<?php echo $u_name; ?>" action="profile.php">
-              <input type="hidden" name="username" value="<?php echo $u_name; ?>" />
+            <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+              <input type="hidden" name="username" value="<?php echo $username; ?>" />
             </form>
             <a style="cursor:pointer; cursor:hand;" onclick="javascript:document.getElementById('usernameForm<?php echo $username; ?>').submit();">
               <font style="color:#ffffff; font-family:verdana; cursor:pointer; cursor:hand;"> 
-                Proflie
+                Profile
               </font>
             </a>
           </td>
@@ -75,9 +88,9 @@ include_once "function.php";
           </td>
           <td align="right" style="width:200px">
             <!-- Search bar that will open searchMedia.php -->
-            <form method="post" role="serach" action="searchMedia.php">
+            <form method="post" role="serach" action="search_process.php">
               <div>
-                <input type="text" style="width:200px" name="serachWords" placeholder="Search">
+                <input type="text" style="width:200px" name="searchItems" placeholder="Search">
               </div>
             </form>
           </td>
@@ -154,9 +167,9 @@ include_once "function.php";
           </td>
           <td align="right" style="width:200px">
             <!-- Search bar that will open searchMedia.php -->
-            <form method="post" role="serach" action="searchMedia.php">
+            <form method="post" role="search" action="search_process.php">
               <div>
-                <input type="text" style="width:200px" name="serachWords" placeholder="Search">
+                <input type="text" style="width:200px" name="searchItems" placeholder="Search">
               </div>
             </form>
           </td>

@@ -108,5 +108,30 @@ function update_profile_info($user, $pass, $first, $last, $gender, $email) {
 
   return 1;
 }
+
+function update_media_info($mediaid, $title, $tags, $description, $category) {
+
+  if($title != "") {
+    $titlequery = "update media set title='$title' where mediaid='$mediaid'";
+    $titleresult = mysql_query($titlequery);
+  }
+  
+  if($tags != "") {
+    $tagsquery = "update media set tags='$tags' where mediaid='$mediaid'";
+    $tagsresult = mysql_query($tagsquery);
+  }
+
+  if($description != "") {
+    $descriptionquery = "update media set description='$description' where mediaid='$mediaid'";
+    $descriptionresult = mysql_query($descriptionquery);
+  }
+ 
+  if($category != "") {
+    $categoryquery = "update media set category='$category' where mediaid='$mediaid'";
+    $cateforyresult = mysql_query($categoryquery);
+  }
+
+  return 1;
+}
 	
 ?>

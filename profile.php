@@ -20,6 +20,10 @@ include_once "function.php";
 <!-- this is the bar on the top of the screen -->
 <?php require 'header.php'; ?>
 
+<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+  <input type="hidden" name="username" value="<?php echo $username; ?>" />
+</form>
+
 <?php
   $username = $_POST['username'];
   $accountquery = "select * from account where username = '$username'";
@@ -72,9 +76,9 @@ include_once "function.php";
             </a>
           </td>
           <td>
-            <a href="./my_media.php" style="text-decoration:none">
+            <a href="./my_favorites.php" style="text-decoration:none">
               <font style="color:#ffffff; font-size:20px; font-family:verdana;">
-                My Media
+                My Favorites
               </font>
             </a>
           </td>
@@ -91,7 +95,9 @@ include_once "function.php";
 
       <h1>
         <font style="color:#ffffff; font-family:verdana;">
-          <?php echo $username ?>
+          <?php 
+            echo $username 
+          ?>
         </font>
       </h1>
 
@@ -195,15 +201,17 @@ include_once "function.php";
       <br>
     <?php
     }
+  }
 
-    $mediaquery = "select * from media where username='$username'";
-    $mediaresult = mysql_query($mediaquery);
-    if(!$mediaresult) {
-      exit("Could not get information from Media table: <br />". mysql_error());
-    } ?>
+  $mediaquery = "select * from media where username = '$username'";
+  $mediaresult = mysql_query($mediaquery);
+  if(!$mediaresult) {
+    echo "no media";
+  } 
 
+  else { ?>
     <br>
-    <table style="background:#003366; width:100%; margin:auto; text-align:center;" cellpadding="10">
+    <table style="background:#003366; width:100%; margin:auto; text-align:left;" cellpadding="10">
       <tr>
         <td>
           <font style="color:#ffffff; font-family:verdana;">
@@ -211,7 +219,7 @@ include_once "function.php";
               echo $username;
               echo "'s";
             ?>
-            Media
+            Media - Click filename to view Media
           </font>
         </td>
       </tr>
@@ -224,15 +232,37 @@ include_once "function.php";
         $path = $rowresult[4];
         $title = $rowresult[5]; ?>
         <tr> 
+          <td  width="40px">
+            <font style="color:#ffffff; font-family:verdana;">
+              <?php echo $mediaid;?>
+            </font>
+          </td>
+          <td  width="250px">
+            <font style="color:#ffffff; font-family:verdana;">
+              <?php echo $title;?>
+            </font>
+          </td>
           <td style="text-align:left">
             <a href="media.php?id=<?php echo $mediaid;?>" style="text-decoration:none" target="_blank">
               <font style="color:#ffffff; font-family:verdana;">
                 <?php 
-                  echo $title;
+                  echo $filename;
                 ?>
               </font>
             </a>
           </td>
+          <?php if($_SESSION['username'] == $username) { ?>
+            <td style="background:#00994c; text-align:center" width="200px">
+              <form method="post" id="updateMediaForm<?php echo $mediaid; ?>" action="update_media.php">
+                <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
+              </form>
+              <a style="cursor:pointer; cursor:hand; text-decoration:none;" onclick="javascript:document.getElementById('updateMediaForm<?php echo $mediaid; ?>').submit(); ">
+                <font style="color:#ffffff; font-family:verdana;">
+                  Update Media
+                </font>
+              </a>
+            </td>
+          <?php } ?>
           <td style="background:#00994c; text-align:center" width="100px">
             <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $success_row[4];?>);">
               <font style="color:#ffffff; font-family:verdana;">
@@ -244,7 +274,8 @@ include_once "function.php";
       <?php } ?>
       <br>
     </table>
-  <?php } ?>  
+  <?php } ?>
+
   </div>
 </body>
 </html>

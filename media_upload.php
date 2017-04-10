@@ -21,6 +21,11 @@ session_start();
 </head>
 
 <body bgcolor="#00cc66">
+
+  <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    <input type="hidden" name="username" value="<?php echo $username; ?>" />
+  </form>
+
   <br><br>
 
   <div>
@@ -77,6 +82,18 @@ session_start();
               <option>Travel</option>
               <option>Weather</option>
             </select>
+          </div>
+        </div>
+        <br>
+        <div>
+          <label for="tags">
+            <font style="color:#ffffff; font-family:verdana;">
+              Tags:
+            </font>
+          </label>
+          <div>
+            <textarea style="width:200px" rows=3 name="tags"></textarea>
+            <br>
           </div>
         </div>
 

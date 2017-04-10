@@ -25,7 +25,7 @@ session_start();
     }
   }
 
-  $accountquery = "select *from account where username='$username'";
+  $accountquery = "select * from account where username='$username'";
   $accountresult=mysql_query($accountquery);
   $rowresult=mysql_fetch_row($accountresult);
 
@@ -51,6 +51,11 @@ session_start();
 </head>
 
 <body bgcolor="#00cc66">
+
+    <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+      <input type="hidden" name="username" value="<?php echo $username; ?>" />
+    </form>
+
   <br><br>
   <div>
   <form method="post" action="update_profile.php" enctype="multipart/form-data">
@@ -179,7 +184,7 @@ session_start();
 
       <tr>
         <td>
-          <input name="submit" type="submit" class="btn btn-primary" value="Update">
+          <input name="submit" type="submit" value="Update">
         </td>
       </tr>
       </table>

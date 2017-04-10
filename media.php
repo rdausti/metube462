@@ -19,9 +19,14 @@
 
 <body bgcolor="#00cc66">
 
-<div>
+<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+  <input type="hidden" name="username" value="<?php echo $username; ?>" />
+</form>
 
+<div>
   <?php
+
+  //IF THE MEDIA ID IS SET
   if(isset($_GET['id'])) {
   	$mediaquery = "SELECT * FROM media WHERE mediaid='".$_GET['id']."'";
   	$mediaresult = mysql_query( $mediaquery );
@@ -32,6 +37,8 @@
           $title=$resultrow[5];
           $description=$resultrow[7]; 
   	$type=$resultrow[2];
+
+    //IMAGE
   	if(substr($type,0,5)=="image") { ?>
       <h2>
         <font style="color:#ffffff; font-family:verdana;">
@@ -49,6 +56,8 @@
       </a>
     <?php
   	}
+
+    //VIDEO
   	else if (substr($type,0,5)=="video") { ?>	
   	  <h2>
         <font style="color:#ffffff; font-family:verdana;">
@@ -64,9 +73,9 @@
         <param name="autoStart" value="True">
         <div style="text-align:center">
           <video width="400" controls>
-            <source src="<?php echo $filepath; ?>" type="video/mp4">
-            <source src="<?php echo $filepath; ?>" type="video/webm">
-            <source src="<?php echo $filepath; ?>" type="video/ogg">
+            <source src="<?php echo $path; ?>" type="video/mp4">
+            <source src="<?php echo $path; ?>" type="video/webm">
+            <source src="<?php echo $path; ?>" type="video/ogg">
             Your browser cannot support HTML5 video.
           </video>
           <br>
@@ -78,16 +87,16 @@
         </script>
       </object>
 
-      <a href="<?php echo $filepath; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
         <font style="color:#ffffff; font-family:verdana;">
           Click to Download
         </font>
         <br><br>
-      </a>
-
-      <!-- <embed type="application/x-mplayer2" src="<?php echo $filepath;  ?>" name="MediaPlayer" width=320 height=240></embed> -->     
+      </a>    
     <?php
     }
+
+    //AUDIO
     else if(substr($type,0,5) == "audio") { ?>
       <h2>
         <font style="color:#ffffff; font-family:verdana;">
@@ -103,8 +112,8 @@
         <param name="autoStart" value="True">
         <div style="text-align:center">
           <audio controls>
-            <source src="<?php echo $filepath; ?>" type="audio/mpeg">
-            <source src="<?php echo $filepath; ?>" type="audio/ogg">
+            <source src="<?php echo $path; ?>" type="audio/mpeg">
+            <source src="<?php echo $path; ?>" type="audio/ogg">
             Your browser cannot support HTML5 audio.
           </audio>
           <br>
@@ -116,7 +125,7 @@
         </script>
       </object>
 
-      <a href="<?php echo $filepath; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
         <font style="color:#ffffff; font-family:verdana;">
           Click to Download
         </font>
@@ -124,6 +133,8 @@
       </a>
     <?php
     }
+
+    //OTHER MEIDA FORMS
     else { ?>
 
       <h2>
@@ -138,7 +149,7 @@
           <?php echo $filename; ?>
         </td>
         <td>
-          <a href="<?php echo $filepath; ?>" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+          <a href="<?php echo $path; ?>" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
             <font style="color:#ffffff; font-family:verdana;">
               Click to Download
             </font>
@@ -152,10 +163,12 @@
     }
 
     $mediaid=$_GET['id'];
-    if(isset($_SESSION['username'])) {
-      $username=$_SESSION['username'];
-    ?>
 
+    //IF A USER IS LOGED IN
+    if(isset($_SESSION['username'])) {
+      $username=$_SESSION['username']; ?>
+
+      <!-- FAVORITES -->
       <div>
         <?php
         echo "<h4>Favorites: </h4><br>";
@@ -172,7 +185,7 @@
          // $subquery="select * from subs where channelid=$channelid and username='$username';";
          // $subscription=mysql_query($subquery);
          // $is_subbed=mysql_num_rows($subscription);
-       // }
+        //}
         ?>
 
         <script type="text/javascript">
@@ -234,10 +247,14 @@
         }
       </script>
 
+
+
       <?php
       // $queryPlaylist = "select * from playlists where username = '$username' and playlistid not in (select playlistid from playlistmedia where username='$username' and mediaid = $mediaid);";
       // $playlistresult = mysql_query($queryPlaylist);
       ?>
+
+      <!-- PLYALISTS -->
       <div>
         <form method="post" action="add_to_playlist_process.php" enctype="multipart/form-data">
           <label for="playlistTitle">
@@ -273,90 +290,109 @@
           </div>
         </form>
       </div>
-             
-    <?php   
-    } ?>
-          <table style="width:100%" cellpadding="10">
-            <tr style="background:#003366" >
-              <td>
-                <font style="color:#ffffff; font-family:verdana;">
-                  Description: &nbsp;
-                </font>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <font style="color:#ffffff; font-family:verdana;">
-                  <?php echo $description; ?>
-                </font>
-              </td>
-            <tr>
-          </table>
-          <?php 
-          // $commentquery = "select * from comments where mediaid='$mediaid'";
-          // $comments = mysql_query($commentquery);
-          // if(!$comments) {
-            // die("Could not query comment table in database: <br />".mysql_error());
-          // }
-          // ?>
-           <!-- <br>
-            <fieldset class="form-horizontal">
-              <legend>Comments</legend>
-              <table class="table table-striped">
-             // <?php
-             // while($singlecomment = mysql_fetch_row($comments)) {
-               // $commentid = $singlecomment[0];
-               // $commentuser = $singlecomment[2];
-              //  $commentbody = $singlecomment[3];
-             // ?>
-                <tr>
-                <td label>
-               // <?php
-              //  if(!isset($username) or $username != $commentuser) { ?>
-                  <form id="showProfile<?php echo $commentid; ?>" method="post" action="profile.php">
-                    <a href="javascript:document.getElementById('showProfile<?php echo $commentid; ?>').submit();"><?php echo $commentuser; ?></a>
-                    <input type="hidden" value="<?php echo $commentuser; ?>" name="username" />
-                  </form>
-               // <?php
-              //  }
-               // else { ?>
-                  <form id="deletecomment<?php echo $commentid; ?>" method="post" action="delete_comment_process.php">
-                 //   <?php echo $commentuser;
-                  //  echo ':'; ?>
-                    <a href="javascript:document.getElementById('deletecomment<?php echo $commentid; ?>').submit();"><small>Delete</small></a>
-                    <input type="hidden" value="<?php echo $commentid; ?>" name="commentid" />
-                    <input type="hidden" value="<?php echo $mediaid; ?>" name="mediaid" />
-                  </form> -->
-                <?php
-               // } ?>
-             <!-- </label>
-              
-              <br><p><?php echo $commentBody?></p>
-              </td>
-              </tr>-->
-            <?php
-           // }
-           // if(isset($username)) { ?>
-            <!--  <tr>
-                <td>
-                  <form method="post" action="comment_process.php">
-                    <label><?php echo $_SESSION['username']?>:</label>
-                    <br>
-                    <textarea rows="3" name="usercomment"></textarea>
-                    <input type="submit" value="Post Comment"/>
-                    <input type="hidden" name="mediaid" value="<?php echo $mediaid ?>" />
-                  </form>
-                </td>
-              </tr> 
-            </table>
-          </fieldset> -->
 
+      <!-- DESCRIPTION -->
+      <table style="width:100%" cellpadding="10">
+        <tr style="background:#003366" >
+          <td>
+            <font style="color:#ffffff; font-family:verdana;">
+              Description: &nbsp;
+            </font>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <font style="color:#ffffff; font-family:verdana;">
+              <?php echo $description; ?>
+            </font>
+          </td>
+        <tr>
+      </table>
+
+
+      <?php
+      //COMMENTS 
+      $commentquery = "select * from comment where mediaid='$mediaid'";
+      $comments = mysql_query($commentquery);
+      if(!$comments) {
+        exit("Could not query comment table in database: <br />".mysql_error());
+      }
+      ?>
+      <br>
+      <table style="width:100%" cellpadding="10">
+        <tr style="background:#003366" >
+          <td>
+            <font style="color:#ffffff; font-family:verdana;">
+              Comments: &nbsp;
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <?php
+        while($singlecomment = mysql_fetch_row($comments)) {
+          $commentid = $singlecomment[0];
+          $commentuser = $singlecomment[2];
+          $commentbody = $singlecomment[3];
+          ?>
+          <tr>
+            <td style="width:100px">
+              <form id="showProfile<?php echo $commentid; ?>" method="post" action="profile.php">
+                <a href="javascript:document.getElementById('showProfile<?php echo $commentid; ?>').submit();">
+                  <font style="color:#ffffff; font-family:verdana;">
+                    <b>
+                      <?php echo $commentuser; 
+                      echo ":"; ?>
+                    </b>
+                  </font>
+                </a>
+                <input type="hidden" value="<?php echo $commentuser; ?>" name="username" />
+              </form>
+            </td>
+            <td>
+              <font style="color:#ffffff; font-family:verdana;">
+                <?php echo $commentbody?>
+              </font>
+            </td>
+          </tr>
+        <?php
+        } ?>
+
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
+        </table>
+
+        <?php
+        if(isset($username)) { ?>
+          <table>
+            <tr>
+              <td>
+                <form method="post" action="comment_process.php">
+                  <label>
+                    <font style="color:#ffffff; font-family:verdana;">
+                      <?php echo $_SESSION['username']?>:
+                    </font>
+                  </label>
+                  <br>
+                  <textarea style="width:400px" rows="3" name="usercomment"> </textarea>
+                  <input type="submit" value="Post"/>
+                  <input type="hidden" name="mediaid" value="<?php echo $mediaid ?>" />
+                </form>
+              </td>
+            </tr> 
+          </table>
+        <?php } ?>
+    <?php 
+    } ?>
 </div>
 
 <?php
-} else { ?>
+} 
+else { ?>
   <meta http-equiv="refresh" content="0;url=browse.php">
-<?php
-} ?>
+<?php } ?>
 </body>
 </html>

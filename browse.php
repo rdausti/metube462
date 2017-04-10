@@ -6,21 +6,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Browse</title>
+<title>
+	Browse
+</title>
 <link rel="stylesheet" type="text/css" href="css/default.css" />
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 <script type="text/javascript">
-
-function saveDownload(id)
-{
-	$.post("media_download_process.php",
+	function saveDownload(id)
 	{
-       id: id,
-	},
-	function(message) 
-    { }
- 	);
-} 
+		$.post("media_download_process.php",
+		{ id: id, },
+		function(message) 
+	    { }
+	 	);
+	} 
 </script>
 
 <!-- bar on top of screen -->
@@ -29,7 +28,13 @@ function saveDownload(id)
 </head>
 
 <body bgcolor="#00cc66">
+
+	<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    	<input type="hidden" name="username" value="<?php echo $username; ?>" />
+    </form>
+
 	<?php 
+
 	//if a user with a username hasn't started a session yet
 	if(!isset($_SESSION['username'])) { ?>
 	  <h2 align="center">
@@ -75,7 +80,7 @@ function saveDownload(id)
     	<tr>
     		<td>
     			<font style="color:#ffffff; font-family:verdana;">
-    				Uploaded Media
+    				Uploaded Media - Click Filename to view Media
     			</font>
     		</td>
     	</tr>
@@ -85,6 +90,7 @@ function saveDownload(id)
 		<?php
 		while ($rowresult = mysql_fetch_row($mediaresult)) { 
 			$mediaid = $rowresult[3];
+			$title = $rowresult[5];
 			$filename = $rowresult[0];
 			$filenpath = $rowresult[4];
 		?>
@@ -92,6 +98,11 @@ function saveDownload(id)
 			<td  width="40px">
 				<font style="color:#ffffff; font-family:verdana;">
 					<?php echo $mediaid;?>
+				</font>
+			</td>
+			<td  width="250px">
+				<font style="color:#ffffff; font-family:verdana;">
+					<?php echo $title;?>
 				</font>
 			</td>
             <td>

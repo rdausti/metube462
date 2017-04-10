@@ -19,6 +19,11 @@ include_once "function.php";
 </head>
 
 <body bgcolor="#00cc66">
+
+  <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    <input type="hidden" name="username" value="<?php echo $username; ?>" />
+  </form>
+
   <?php
   //getting the username
   $username = $_SESSION['username'];
@@ -47,15 +52,16 @@ include_once "function.php";
           if(!$messages) {
             exit("Could not query the message table <br> " .mysql_error());
           }
-          $m_read = 1;
+          $m_read = 1; //TRUE - IT HAS BEEN READ - NOT RED
           $num_messages = mysql_num_rows($messages);
           $count = 0;
           //looping through the messages between one user to see if any are unread
           //if one is then set m_read to false
           while($count != $num_messages) {
             $m = mysql_fetch_row($messages);
-            if(!$m[4]) {
-              $m_read = 0;
+            //IF NOT READ THEN SET TO FALSE
+            if((!$m[4])) {
+              $m_read = 0; //FLASE - NOT BEEN READ BY RECIEVER - RED
             }
             $count = $count + 1;
           }

@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/default.css" />
 
-<body bgcolor=#00cc66>
+<body bgcolor="#00cc66">
 <?php require 'header.php'; ?>
 
 <?php
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
 		$register_error = "Passwords don't match. Try again?";
 	}
 	else {
-		$check = user_exist_check(ucfirst($_POST['username']), $_POST['password1'], $_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['email']);	
+		$check = user_exist_check($_POST['username'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['email']);	
 		if($check == 1){
 			$_SESSION['username']=$_POST['username'];
 			header('Location: browse.php');

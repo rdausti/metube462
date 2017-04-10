@@ -22,8 +22,8 @@ include_once "function.php";
   <div>
   
   <?php
-  $receiver=ucfirst($_POST['sendTo']);
-  $sender=$_SESSION['username'];
+  $receiver = $_POST['sendTo'];
+  $sender = $_SESSION['username'];
 
   if($sender == $receiver) {
     echo "<div>Error: Cannot message yourself. Please pick new receiver.</div>";
@@ -109,7 +109,7 @@ include_once "function.php";
   <?php
   }
 
-  $updatemessage = "update message set isItRead=1 where receiver='$sender' and sender = '$receiver';";
+  $updatemessage = "update message set isItRead = 1 where receiver = '$sender' and sender = '$receiver';";
   $messageesult = mysql_query($updatemessage) or die("Could not query message: <br />". mysql_error());
   ?>
 </body>
