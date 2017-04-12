@@ -79,7 +79,11 @@ if(isset($_POST['submit'])) {
 
 <?php
 if(isset($login_error))
-{  echo "<div id='passwd_result'>".$login_error."</div>";}
+{  ?>
+	<font style="color:#ffffff; font-family:verdana;">
+		<?php echo "<div id='passwd_result'>".$login_error."</div>"; ?>
+	</font>
+<?php }
 ?>
 
 </body>

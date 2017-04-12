@@ -160,20 +160,275 @@ $category = $rowresult[8];
 	      				</td>
 	      				<td>
 	      					<select style="width:200px" name="category" value="<?php echo $category ?>">
-					        	<option>Animals</option>
-					        	<option>Cars</option>
-					        	<option>Children</option>
-					        	<option>History</option>
-					        	<option>Home</option>
-					        	<option>Humor</option>
-					        	<option>Music</option>
-					        	<option>News</option>
-					        	<option>Outdoors</option>
-					        	<option>Photography</option>
-					        	<option>Science</option>
-					        	<option>Sports</option>
-					        	<option>Travel</option>
-					        	<option>Weather</option>
+	      						<?php if($category == "Animals") {
+	      							?>
+	      							<option selected>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+	      						<?php }
+					        	else if($category == "Cars") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option selected>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Children") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option selected>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "History") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option selected>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Home") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option selected>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Humor") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option selected>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Music") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option selected>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "News") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option selected>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Outdoors") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option selected>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Photography") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option selected>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Science") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option selected>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Sports") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option selected>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Travel") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option selected>Travel</option>
+						        	<option>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else if($category == "Weather") {
+	      							?>
+	      							<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option selected>Weather</option>
+						        	<option>Other</option>
+						        <?php }
+						        else { ?>
+						        	<option>Animals</option>
+						        	<option>Cars</option>
+						        	<option>Children</option>
+						        	<option>History</option>
+						        	<option>Home</option>
+						        	<option>Humor</option>
+						        	<option>Music</option>
+						        	<option>News</option>
+						        	<option>Outdoors</option>
+						        	<option>Photography</option>
+						        	<option>Science</option>
+						        	<option>Sports</option>
+						        	<option>Travel</option>
+						        	<option>Weather</option>
+						        	<option selected >Other</option>
+						        <?php } ?>
 					        </select>
 	      				</td>
 	      			</tr>

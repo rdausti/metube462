@@ -30,15 +30,16 @@
 
   //IF THE MEDIA ID IS SET
   if(isset($_GET['id'])) {
-  	$mediaquery = "SELECT * FROM media WHERE mediaid='".$_GET['id']."'";
+  	$mediaquery = "select * from media where mediaid='".$_GET['id']."'";
   	$mediaresult = mysql_query( $mediaquery );
-          $resultrow = mysql_fetch_row($mediaresult);
+    $resultrow = mysql_fetch_row($mediaresult);
   	
-  	$filename=$resultrow[0]; 
-  	$path=$resultrow[4];
-          $title=$resultrow[5];
-          $description=$resultrow[7]; 
-  	$type=$resultrow[2];
+  	$filename = $resultrow[0]; 
+  	$path = $resultrow[4];
+    $title = $resultrow[5];
+    $description = $resultrow[7];
+    $category = $resultrow[8]; 
+  	$type = $resultrow[2];
 
     //IMAGE
   	if(substr($type,0,5)=="image") { ?>
@@ -165,7 +166,49 @@
     }
 
     $mediaid=$_GET['id'];
+    ?>
 
+    <!-- DESCRIPTION -->
+    <table style="width:100%" cellpadding="10">
+      <tr style="background:#003366" >
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            Description: &nbsp;
+          </font>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            <?php echo $description; ?>
+          </font>
+        </td>
+      <tr>
+    </table>
+
+    <br><br>
+
+    <!-- CATEGORY -->
+    <table style="width:100%" cellpadding="10">
+      <tr style="background:#003366" >
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            Category: &nbsp;
+          </font>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            <?php echo $category; ?>
+          </font>
+        </td>
+      <tr>
+    </table>
+
+    <br><br>
+
+    <?php
     //IF A USER IS LOGED IN
     if(isset($_SESSION['username'])) {
       $username=$_SESSION['username']; ?>
@@ -173,10 +216,10 @@
       <!-- FAVORITES -->
       <div>
         <?php
-        echo "<h4>Favorites: </h4><br>";
-        $favoritequery = "select * from favorite where mediaid=$mediaid and username='$username';";
+        $favoritequery = "select * from favorite where mediaid = '$mediaid' and username = '$username';";
         $rows = mysql_query($favoritequery);
         $favorite = mysql_num_rows($rows);
+
        // $channelquery="select channeltitle, channels.channelid, username from channelmedia join channels where channels.channelid=channelmedia.channelid and mediaid=$mediaid;";
        // $channel=mysql_query($channelquery);
        // $singlechannel=mysql_fetch_row($channel);
@@ -206,19 +249,42 @@
             }
           }
         </script>
+
         <form method="post" id="button form" action="" enctype="multipart/form-data">
           <?php
           if($favorite) { ?>
+            <table style="width:100%" cellpadding="10">
+              <tr style="background:#003366" >
+                <td>
+                  <font style="color:#ffffff; font-family:verdana;">
+                    On Favorites List &nbsp;
+                  </font>
+                </td>
+              </tr>
+            </table>
+            <br>
             <input onclick="changeAction('unfavorite')" type="submit" value="Unfavorite" name="unfavorite">
             <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
           <?php
           }
           else { ?>
+            <table style="width:100%" cellpadding="10">
+              <tr style="background:#003366" >
+                <td>
+                  <font style="color:#ffffff; font-family:verdana;">
+                    Not On Favorites List &nbsp;
+                  </font>
+                </td>
+              </tr>
+            </table>
+            <br>
             <input onclick="changeAction('favorite')" type="submit" value="Favorite" name="favorite">
             <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
           <?php
-          }
+          } ?>
 
+          <br><br><br>
+          <?php 
          // if(isset($channelid) and $username != $channelowner) {
            // if($is_subbed) { ?>
              <!-- <input onclick="changeAction('unsubscribe')" type="submit" value="Unsubscribe from <?php echo $channeltitle; ?>" name="unsubscribe" />
@@ -237,14 +303,14 @@
       <script type="text/javascript">
         function checkValue(val) {
           if(val == "add new") {
-            document.getElementById('playlistTitleNew').style.display='block';
-            document.getElementById('createAndAddToPlaylist').style.display='block';
-            document.getElementById('addToPlaylist').style.display='block';
+            document.getElementById('CPTitle').style.display='block';
+            document.getElementById('CADDTitle').style.display='block';
+            document.getElementById('ADDTitle').style.display='block';
           }
           else {
-            document.getElementById('playlistTitleNew').style.display='none';
-            document.getElementById('createAndAddToPlaylist').style.display='none';
-            document.getElementById('addToPlaylist').style.display='block';
+            document.getElementById('CPTitle').style.display='none';
+            document.getElementById('CADDTitle').style.display='none';
+            document.getElementById('ADDTitle').style.display='block';
           }
         }
       </script>
@@ -252,65 +318,77 @@
 
 
       <?php
-      // $queryPlaylist = "select * from playlists where username = '$username' and playlistid not in (select playlistid from playlistmedia where username='$username' and mediaid = $mediaid);";
-      // $playlistresult = mysql_query($queryPlaylist);
+      $queryPlaylist = "select * from playlist where username = '$username' and playlistid not in (select playlistid from playlistMedia where username = '$username' and mediaid = '$mediaid');";
+      $playlistresult = mysql_query($queryPlaylist);
       ?>
 
-      <!-- PLYALISTS -->
+      <!-- PLAYLISTS -->
       <div>
-        <form method="post" action="add_to_playlist_process.php" enctype="multipart/form-data">
-          <label for="playlistTitle">
-            <font style="color:#ffffff; font-family:verdana;">
-              Select playlist: 
-            </font>
-          </label>
+        <form method="post" action="add_playlist_process.php" enctype="multipart/form-data">
+
+          <table style="width:100%" cellpadding="10">
+            <tr style="background:#003366" >
+              <td>
+                <font style="color:#ffffff; font-family:verdana;">
+                  Select Playlist: &nbsp;
+                </font>
+              </td>
+            </tr>
+          </table>
           <div>
-            <select onchange='checkValue(this.value);' name="playlistTitle">
-             // <?php
-             // while($singleplaylist=mysql_fetch_row($playlistresult)) {
-               // $playlisttitle=$singleplaylist[1];
-             // ?>
-                <option value="<?php echo $playlisttitle; ?>">
-                  <?php echo$playlisttitle?>
-                </option>
-              <?php
-             // } ?>
-              <option value="add new">
-                Make new playlist
-              </option>
-            </select>
-            <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
-            <span>
-              <input type="submit" value="Add" id="addToPlaylist" name="addToPlaylist" />
-            </span>
+            <table>
+              <tr>
+                <td>
+                  <font style="color:#ffffff; font-family:verdana;">
+                    Add to Playlist: &nbsp;
+                  </font>
+                </td>
+                <td>
+                  <select onchange='checkValue(this.value);' name="ADDTitle" id="ADDTitle" style="width:400px">
+                    <?php
+                    while($singleplaylist = mysql_fetch_row($playlistresult)) {
+                      $playlisttitle = $singleplaylist[1];
+                    ?>
+                      <option value="<?php echo $playlisttitle; ?>">
+                        <?php echo $playlisttitle?>
+                      </option>
+                    <?php
+                    } ?>
+                  </select>
+                </td>
+                <td>
+                  <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
+                  <span>
+                    <input type="submit" value="Add" id="addToPlaylist" name="addToPlaylist" />
+                  </span>
+                </td>
+              </tr>
+            </table>
           </div>
           <div>
-            <input type="text" name="playlistTitleNew" id="playlistTitleNew" style='display:none;' />
-            <span>
-              <input type="submit" value="Add" id="createAndAddToPLaylist" name="createAndAddtoPlaylist" style='display:none;' />
-            </span>
+            <table>
+              <tr>
+                <td width="220px">
+                  <font style="color:#ffffff; font-family:verdana;">
+                    Create and Add to Playlist:
+                  </font>
+                </td>
+                <td width="200px">
+                  <input type="text" name="CADDTitle" id="CADDTitle" style="width:200px">
+                </td>
+                <td>
+                  <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
+                  <input type="submit" value="Create and Add Playlist" id="createAndAddToPLaylist" name="createAndAddToPlaylist">
+                </td>
+              </tr>
+            </table>
           </div>
         </form>
+
+
       </div>
 
-      <!-- DESCRIPTION -->
-      <table style="width:100%" cellpadding="10">
-        <tr style="background:#003366" >
-          <td>
-            <font style="color:#ffffff; font-family:verdana;">
-              Description: &nbsp;
-            </font>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <font style="color:#ffffff; font-family:verdana;">
-              <?php echo $description; ?>
-            </font>
-          </td>
-        <tr>
-      </table>
-
+      <br><br>
 
       <?php
       //COMMENTS 

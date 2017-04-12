@@ -31,7 +31,7 @@ include_once "function.php";
 
 	<table style="width:100%" cellpadding="10">
     	<tr style="background:#003366" >
-    		<td>
+    		<td align="center">
 	            <font style="color:#ffffff; font-family:verdana;">
 	            	My Favorites
 	            </font>

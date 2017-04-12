@@ -9,7 +9,6 @@
 <title>
 	Browse
 </title>
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 <script type="text/javascript">
 	function saveDownload(id)
@@ -42,6 +41,20 @@
 	  		Welcome
 	  	</font>
 	  </h2>
+
+	  <table width="100%">
+	  	<tr>
+	  		<td align="right">
+	  			<a href='browse_category.php' style="text-decoration:none">
+	  				<font style="color:#ffffff; font-family:verdana;">
+	  					Browse By Category
+	  				</font>
+	  			</a>
+	  		</td>	
+	  	</tr>	
+	  </table>	
+	  <br/><br/>
+
 	<?php } 
 	//if a user with a username has started a session 
 	else { ?>
@@ -51,11 +64,25 @@
 	  	</font>
 	  </h2>
 
-	  <a href='media_upload.php' style="text-decoration:none; background:#00994c;">
-	  	<font style="color:#ffffff; font-family:verdana;">
-	  		Upload File
-	  	</font>
-	  </a>
+	  <table width="100%">
+	  	<tr>
+	  		<td>
+	  			<a href='media_upload.php' style="text-decoration:none">
+	  				<font style="color:#ffffff; font-family:verdana;">
+	  					Upload File
+	  				</font>
+	  			</a>
+	  		</td>
+	  		<td align="right">
+	  			<a href='browse_category.php' style="text-decoration:none">
+	  				<font style="color:#ffffff; font-family:verdana;">
+	  					Browse By Category
+	  				</font>
+	  			</a>
+	  			
+	  		</td>	
+	  	</tr>	
+	  </table>	
 	  
 	  <div id='upload_result'>
 		<?php 

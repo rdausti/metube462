@@ -81,6 +81,7 @@ session_start();
               <option>Sports</option>
               <option>Travel</option>
               <option>Weather</option>
+              <option>Other</option>
             </select>
           </div>
         </div>

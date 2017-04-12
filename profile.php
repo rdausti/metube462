@@ -70,21 +70,28 @@ include_once "function.php";
         <tr>
           <td>
             <a href="./channels.php" style="text-decoration:none">
-              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
+              <font style="color:#ffffff; font-family:verdana;">
                 My Channels
               </font>
             </a>
           </td>
           <td>
             <a href="./favorites.php" style="text-decoration:none">
-              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
+              <font style="color:#ffffff; font-family:verdana;">
                 My Favorites
               </font>
             </a>
           </td>
           <td>
+            <a href="./all_playlists.php" style="text-decoration:none">
+              <font style="color:#ffffff; font-family:verdana;">
+                My Playlists
+              </font>
+            </a>
+          </td>
+          <td>
             <a href="./update_profile.php" style="text-decoration:none">
-              <font style="color:#ffffff; font-size:20px; font-family:verdana;">
+              <font style="color:#ffffff; font-family:verdana;">
                 Update Profile
               </font>
             </a>
