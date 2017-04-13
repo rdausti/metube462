@@ -18,7 +18,7 @@ include_once "function.php";
     <table width="100%" bgcolor="#ff007f" cellpadding="10">
       <div>
         <tr>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- METUBE button that takes user to browse.php -->
             <a href="browse.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -26,7 +26,7 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- Media button that takes the user to browse.php -->
             <a href="browse.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -34,7 +34,7 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- Users button that takes the user to accounts.php -->
             <a href="accounts.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -78,7 +78,7 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <td>
+          <td align="right" style="width:50px">
             <!-- Logout button that allows the user to log out -->
             <a href="logout.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
