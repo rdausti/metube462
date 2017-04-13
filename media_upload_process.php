@@ -3,11 +3,11 @@ session_start();
 include_once "function.php";
 
 
-$username=$_SESSION['username'];
-$title= mysql_real_escape_string($_POST['title']);
-$tags=mysql_real_escape_string($_POST['tags']);
-$description=mysql_real_escape_string($_POST['description']);
-$category=mysql_real_escape_string($_POST['category']);
+$username = $_SESSION['username'];
+$title = mysql_real_escape_string($_POST['title']);
+$tags = mysql_real_escape_string($_POST['tags']);
+$description = mysql_real_escape_string($_POST['description']);
+$category = mysql_real_escape_string($_POST['category']);
 
 //Create Directory if doesn't exist
 if(!file_exists('uploads/'))
@@ -50,17 +50,7 @@ if(!file_exists($dirfile))
 			}
 		}
 	}
-       // $channelid=$_POST['channels'];
-       // if($channelid != "none") {
-         // $queryMedia = "select mediaid from media where username='$username' order by mediaid desc;";
-         // $resultMedia = mysql_query($mediaquery);
-         // $resultMedia_row = mysql_fetch_row($media_result);
-         // $mediaid=$resultMedia_row[0];
-         // $queryChannel = "insert into channelmedia(mapid,channelid,mediaid) values (NULL,$channelid, $mediaid);";
-         // $channelresult = mysql_query($queryChannel);
-       // }
-	
-	//You can process the error code of the $result here.
+
 ?>
 
 <meta http-equiv="refresh" content="0;url=browse.php?result=<?php echo $result;?>">

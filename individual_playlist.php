@@ -71,7 +71,7 @@
 		$path = $mediarow[4];
 		$title = $mediarow[5]; 
 		?>
-		<table>
+		<table width="100%">
 			<tr valign="top">			
 				<td  width="40px">
 					<font style="color:#ffffff; font-family:verdana;">
@@ -97,7 +97,7 @@
 		            	</font>
 		            </a>
 	            </td>
-	            <td align="center" style="background:#00994c" width="100px">
+	            <td align="center" width="100px">
 	            	<form method="post" action="delete_media_from_playlist_process.php" enctype="multipart/form-data">
 	            		<input type="submit" value="Remove" name="delete">
 	            		<input type="hidden" name="playlistid" value="<?php echo $playlistid ?>">

@@ -16,6 +16,11 @@ include_once "function.php";
 </head>
 
 <body bgcolor="#00cc66">
+
+	<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    	<input type="hidden" name="username" value="<?php echo $username; ?>" />
+  	</form>
+
 	<div>
 		<br>
 		<table style="width:100%" cellpadding="10">

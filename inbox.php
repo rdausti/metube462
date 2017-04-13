@@ -7,7 +7,6 @@ include_once "function.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <title>
   Messages Inbox
 </title>
@@ -35,57 +34,60 @@ include_once "function.php";
   <br><br>
 
   <div>
-    <fieldset>
-      <legend> 
-        <font style="color:#ffffff; font-family:verdana;">
-          Messages Inbox 
-        </font>
-      </legend>
-      <table cellpadding="5">
-        <?php
-        //while the current sender still has a message  
-        while ($single_message = mysql_fetch_row($userresults)) {
-          $m_sender = $single_message[2];
-          //taking into account the two way conversation where each messager is a sender or receiver
-          $messagequery="select * from message where ((receiver='$username' and sender='$m_sender') or (receiver='$m_sender' and sender='$username')) order by messageid desc;";
-          $messages = mysql_query($messagequery);
-          if(!$messages) {
-            exit("Could not query the message table <br> " .mysql_error());
+    <table style="background:#003366; width:100%;" cellpadding="10">
+      <tr>
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            Messages Inbox
+          </font>
+        </td>
+      </tr>
+    </table>
+    <br><br>
+    <table cellpadding="5">
+      <?php
+      //while the current sender still has a message  
+      while ($single_message = mysql_fetch_row($userresults)) {
+        $m_sender = $single_message[2];
+        //taking into account the two way conversation where each messager is a sender or receiver
+        $messagequery="select * from message where ((receiver='$username' and sender='$m_sender') or (receiver='$m_sender' and sender='$username')) order by messageid desc;";
+        $messages = mysql_query($messagequery);
+        if(!$messages) {
+          exit("Could not query the message table <br> " .mysql_error());
+        }
+        $m_read = 1; //TRUE - IT HAS BEEN READ - NOT RED
+        $num_messages = mysql_num_rows($messages);
+        $count = 0;
+        //looping through the messages between one user to see if any are unread
+        //if one is then set m_read to false
+        while($count != $num_messages) {
+          $m = mysql_fetch_row($messages);
+          //IF NOT READ THEN SET TO FALSE
+          if((!$m[4])) {
+            $m_read = 0; //FLASE - NOT BEEN READ BY RECIEVER - RED
           }
-          $m_read = 1; //TRUE - IT HAS BEEN READ - NOT RED
-          $num_messages = mysql_num_rows($messages);
-          $count = 0;
-          //looping through the messages between one user to see if any are unread
-          //if one is then set m_read to false
-          while($count != $num_messages) {
-            $m = mysql_fetch_row($messages);
-            //IF NOT READ THEN SET TO FALSE
-            if((!$m[4])) {
-              $m_read = 0; //FLASE - NOT BEEN READ BY RECIEVER - RED
-            }
-            $count = $count + 1;
-          }
-          ?>
-          <tr>
-            <td>
-              <form method="post" action="message_process.php">
-                <!-- if there are no unread messages then just print normally -->
-                <?php if($m_read) { ?>
-                  <input type="submit" style=" width:200px" value="<?php echo $m_sender ?>" name="readMessage" />
-                  <input type="hidden" name="sendTo" value="<?php echo $m_sender?>"/>
-                <!-- if there is an unread message then print in red to notify the user as to which message chain needs attention-->
-                <?php } else { ?>
-                  <input type="submit" style="color:red; width:200px" value="<?php echo $m_sender ?>" name="readMessage" />
-                  <input type="hidden" name="sendTo" value="<?php echo $m_sender?>"/>
-                <?php } ?> 
-              </form>
-            </td>
-          </tr>
-        <?php
+          $count = $count + 1;
         }
         ?>
-      </table>
-    </fieldset>
+        <tr>
+          <td>
+            <form method="post" action="message_process.php">
+              <!-- if there are no unread messages then just print normally -->
+              <?php if($m_read) { ?>
+                <input type="submit" style=" width:200px" value="<?php echo $m_sender ?>" name="readMessage" />
+                <input type="hidden" name="sendTo" value="<?php echo $m_sender?>"/>
+              <!-- if there is an unread message then print in red to notify the user as to which message chain needs attention-->
+              <?php } else { ?>
+                <input type="submit" style="color:red; width:200px" value="<?php echo $m_sender ?>" name="readMessage" />
+                <input type="hidden" name="sendTo" value="<?php echo $m_sender?>"/>
+              <?php } ?> 
+            </form>
+          </td>
+        </tr>
+      <?php
+      }
+      ?>
+    </table>
     <br><br>
 
     <!-- creating a new message chian with a user that we haven't messaged yet -->

@@ -135,7 +135,7 @@ include_once "function.php";
           </td>
           <td align="center">
             <!-- Users button that takes the user to accounts.php -->
-            <a href="login_error.php" style="text-decoration:none">
+            <a href="accounts.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
                 Users 
               </font>

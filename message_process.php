@@ -7,7 +7,9 @@ include_once "function.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Message</title>
+<title>
+  Message
+</title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 <script src="Sripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
@@ -17,6 +19,10 @@ include_once "function.php";
 </head>
 
 <body bgcolor="#00cc66">
+
+  <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    <input type="hidden" name="username" value="<?php echo $username; ?>" />
+  </form>
 
   <div>
   
@@ -45,64 +51,69 @@ include_once "function.php";
     ?>
 
     <br>
-    <fieldset>
-      <table style="width:100%">
-        <legend>
-          <font style="color:#ffffff; font-family:verdana;">
-            Messages with <?php echo $receiver ?>
-          </font>
-        </legend>
-        <?php
-        while($oneMessage = mysql_fetch_row($messageresult)) {
-          $messageid = $oneMessage[0];
-          $body = $oneMessage[1];
-          $messageSender = $oneMessage[2];
-          $isItRead = $oneMessage[4];
-        ?>
-
-          <tr>
-            <td style="width:8%">
-              <label>
-                <font style="color:#ffffff; font-family:verdana;">
-                  <?php echo $messageSender;?>
-                  :
-                </font>
-              </label>
-            </td>
-            <td>
-              <label>
-                <font style="color:#ffffff; font-family:verdana;">
-                  <?php echo $body;?>
-                </font>
-              </label>
-            </td>
-          </tr>
-          <?php
-        } ?>
-      </table>
-    </fieldset>
-    <br><br>
-    <fieldset>
-      <table>
+      <table style="background:#003366; width:100%;" cellpadding="10">
         <tr>
           <td>
-            <form method="post" action="">
-              <label>
-                <font style="color:#ffffff; font-family:verdana;">
-                  Send to <?php echo $receiver?>:
-                </font>
-              </label>
-              <br><br>
-              <textarea rows="6" style="width:800px" name="content"></textarea>
-              <br><br>
-              <input type="submit" name="send" value="Send"/>
-              <input type="hidden" name="sendTo" value="<?php echo $receiver;?>"/>
-              <input type="hidden" name="sender" value="<?php echo $sender;?>"/>
-            </form>
+            <font style="color:#ffffff; font-family:verdana;">
+              Messages with <?php echo $receiver ?>
+            </font>
           </td>
         </tr>
       </table>
-    </fieldset>
+      <br>
+      <table style="width:100%">
+      <?php
+      while($oneMessage = mysql_fetch_row($messageresult)) {
+        $messageid = $oneMessage[0];
+        $body = $oneMessage[1];
+        $messageSender = $oneMessage[2];
+        $isItRead = $oneMessage[4];
+      ?>
+
+        <tr>
+          <td style="width:8%">
+            <label>
+              <font style="color:#ffffff; font-family:verdana;">
+                <?php echo $messageSender;?>
+                :
+              </font>
+            </label>
+          </td>
+          <td>
+            <label>
+              <font style="color:#ffffff; font-family:verdana;">
+                <?php echo $body;?>
+              </font>
+            </label>
+          </td>
+        </tr>
+        <?php
+      } ?>
+    </table>
+    <br><br>
+    <table style="background:#003366; width:100%;" cellpadding="10">
+      <tr>
+        <td>
+          <font style="color:#ffffff; font-family:verdana;">
+            Send Message to <?php echo $receiver ?>
+          </font>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td>
+          <form method="post" action="">
+            <textarea rows="6" style="width:800px" name="content"></textarea>
+            <br><br>
+            <input type="submit" name="send" value="Send"/>
+            <input type="hidden" name="sendTo" value="<?php echo $receiver;?>"/>
+            <input type="hidden" name="sender" value="<?php echo $sender;?>"/>
+          </form>
+        </td>
+      </tr>
+    </table>
     </div>
  
   <?php

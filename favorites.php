@@ -83,6 +83,7 @@ include_once "function.php";
 	            <td align="center" style="background:#00994c" width="100px">
 		            <form method="post" action="unfavorite_process.php" enctype="multipart/form-data">
 		            	<input type="submit" value="Unfavorite" name="unfavoriteMedia">
+		            	<input type="hidden" name="mediaid" value="<?php echo $mediaid;?>">
 		            </form>
 	            </td>
 			</tr>

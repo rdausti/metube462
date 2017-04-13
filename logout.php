@@ -3,9 +3,10 @@
 <html>
 <head>
 
-<title>MeTube</title>
+<title>
+	MeTube
+</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
   
 </head>
 
@@ -20,7 +21,7 @@
 	header("refresh:2; url=index.php");
 	?>
 
-	<p class="text-primary">
+	<p>
 		<font style="color:#ffffff; font-family:verdana;">
 	  		You have logged out. Please vist MeTube again.
 	  	</font>

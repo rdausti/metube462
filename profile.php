@@ -11,7 +11,6 @@ include_once "function.php";
   Profile
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
   
 </head>
 
@@ -51,7 +50,7 @@ include_once "function.php";
     }
   </script>
 
-  <form method="POST" action="channels.php" id="Channels">
+  <form method="POST" action="all_channels.php" id="Channels">
     <input type="hidden" name="username" value="<?php echo $username;?>"/>
   </form>
 
@@ -69,7 +68,7 @@ include_once "function.php";
       <table style="width:100%; text-align:center; background:#003366; color:#ffffff; width:100%; margin:auto;" cellpadding="10">
         <tr>
           <td>
-            <a href="./channels.php" style="text-decoration:none">
+            <a style="text-decoration:none; cursor:pointer; cursor:hand;" onclick="userToProfile()">
               <font style="color:#ffffff; font-family:verdana;">
                 My Channels
               </font>
@@ -218,6 +217,60 @@ include_once "function.php";
 
   else { ?>
     <br>
+
+    <?php 
+    if(!isset($_SESSION['username'])) { ?>
+      <h1>
+        <font style="color:#ffffff; font-family:verdana;">
+          <?php 
+          echo $username;
+          ?>
+        </font>
+      </h1>
+
+      <h3>
+        <font style="color:#ffffff; font-family:verdana;">
+          Name:
+          <?php 
+            echo " ";
+            echo $firstname;
+            echo " ";
+            echo $lastname; 
+          ?>
+        </font>
+      </h3>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Gender: 
+          <?php 
+            echo " ";
+            echo $gender; 
+          ?>
+        </font>
+      </h4>
+
+      <h4>
+        <font style="color:#ffffff; font-family:verdana;">
+          Email:
+          <?php 
+            echo " ";
+            echo $email; 
+          ?>
+        </font>
+      </h4>
+
+      <a style="cursor:pointer; cursor:hand;" onclick="userToProfile()">
+        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
+          <?php 
+          echo $username;
+          echo "'s";
+          ?>
+          Channels
+        </font>
+      </a>
+    <?php } ?>
+    <br><br>
     <table style="background:#003366; width:100%; margin:auto; text-align:left;" cellpadding="10">
       <tr>
         <td>
@@ -231,7 +284,7 @@ include_once "function.php";
         </td>
       </tr>
     </table>
-    <table style="width:100%;" class="table table-hover">
+    <table style="width:100%;">
       <?php
       while($rowresult = mysql_fetch_row($mediaresult)) {
         $mediaid = $rowresult[3];
@@ -258,18 +311,21 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <?php if($_SESSION['username'] == $username) { ?>
-            <td style="background:#00994c; text-align:center" width="200px">
-              <form method="post" id="updateMediaForm<?php echo $mediaid; ?>" action="update_media.php">
-                <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
-              </form>
-              <a style="cursor:pointer; cursor:hand; text-decoration:none;" onclick="javascript:document.getElementById('updateMediaForm<?php echo $mediaid; ?>').submit(); ">
-                <font style="color:#ffffff; font-family:verdana;">
-                  Update Media
-                </font>
-              </a>
-            </td>
-          <?php } ?>
+          <?php 
+          if(isset($_SESSION['username'])) {
+            if($_SESSION['username'] == $username) { ?>
+              <td style="background:#00994c; text-align:center" width="200px">
+                <form method="post" id="updateMediaForm<?php echo $mediaid; ?>" action="update_media.php">
+                  <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
+                </form>
+                <a style="cursor:pointer; cursor:hand; text-decoration:none;" onclick="javascript:document.getElementById('updateMediaForm<?php echo $mediaid; ?>').submit(); ">
+                  <font style="color:#ffffff; font-family:verdana;">
+                    Update Media
+                  </font>
+                </a>
+              </td>
+          <?php }
+          } ?>
           <td style="background:#00994c; text-align:center" width="100px">
             <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $success_row[4];?>);">
               <font style="color:#ffffff; font-family:verdana;">

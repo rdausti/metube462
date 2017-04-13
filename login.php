@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <?php
 session_start();
 
@@ -48,7 +47,7 @@ if(isset($_POST['submit'])) {
 					</font>
 				</td>
 				<td width="90%">
-					<input class="text" style="width:200px" type="text" name="username">
+					<input style="width:200px" type="text" name="username">
 					<br>
 				</td>
 			</tr>
@@ -59,7 +58,7 @@ if(isset($_POST['submit'])) {
 					</font>
 				</td>
 				<td width="90%">
-					<input class="text" style="width:200px"  type="password" name="password">
+					<input style="width:200px"  type="password" name="password">
 					<br>
 				</td>
 			</tr>

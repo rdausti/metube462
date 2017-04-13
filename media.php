@@ -6,7 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <title>
   Media
 </title>
@@ -165,7 +164,7 @@
     <?php
     }
 
-    $mediaid=$_GET['id'];
+    $mediaid = $_GET['id'];
     ?>
 
     <!-- DESCRIPTION -->
@@ -211,27 +210,14 @@
     <?php
     //IF A USER IS LOGED IN
     if(isset($_SESSION['username'])) {
-      $username=$_SESSION['username']; ?>
+      $username = $_SESSION['username']; ?>
 
       <!-- FAVORITES -->
       <div>
         <?php
         $favoritequery = "select * from favorite where mediaid = '$mediaid' and username = '$username';";
         $rows = mysql_query($favoritequery);
-        $favorite = mysql_num_rows($rows);
-
-       // $channelquery="select channeltitle, channels.channelid, username from channelmedia join channels where channels.channelid=channelmedia.channelid and mediaid=$mediaid;";
-       // $channel=mysql_query($channelquery);
-       // $singlechannel=mysql_fetch_row($channel);
-       // $channeltitle=$singlechannel[0];
-       // $channelid=$singlechannel[1];
-       // $channelowner=$singlechannel[2];
-       // if(isset$channelid)) {
-         // $subquery="select * from subs where channelid=$channelid and username='$username';";
-         // $subscription=mysql_query($subquery);
-         // $is_subbed=mysql_num_rows($subscription);
-        //}
-        ?>
+        $favorite = mysql_num_rows($rows); ?>
 
         <script type="text/javascript">
           function changeAction(type) {
@@ -280,24 +266,52 @@
             <br>
             <input onclick="changeAction('favorite')" type="submit" value="Favorite" name="favorite">
             <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
-          <?php
-          } ?>
+          <?php } ?>
+        </form> 
 
-          <br><br><br>
-          <?php 
-         // if(isset($channelid) and $username != $channelowner) {
-           // if($is_subbed) { ?>
-             <!-- <input onclick="changeAction('unsubscribe')" type="submit" value="Unsubscribe from <?php echo $channeltitle; ?>" name="unsubscribe" />
-              <input type="hidden name="channelid" value="<?php echo $channelid?>">
-            //<?php
-            //}
-              //else { ?>
-                <input onclick="changeAction('subscribe')" type="submit" value="Subscribe to <?php echo $channeltitle; ?>" name="subscribe" />
-                <input type="hidden" name="channelid" value="<?php echo $channelid?>">
-              //<?php
-             // }
-            //} ?> -->
+        <?php
+        //CHANNELS 
+        $channelquery = "select * from channel where username = '$username' and channelid not in (select channelid from channelMedia where username = '$username' and mediaid = '$mediaid');";
+        $channelresult = mysql_query($channelquery);
+        if(!$channelresult) {
+          exit("Could not query channel table: " .mysql_error());
+        } ?>
+
+        <br><br><br>
+        <table style="width:100%" cellpadding="10">
+          <tr style="background:#003366" >
+            <td>
+              <font style="color:#ffffff; font-family:verdana;">
+                Channels: &nbsp;
+              </font>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <form method="post" action="add_media_to_channel_process.php" enctype="multipart/form-data">
+          <table>
+            <tr>
+              <td>
+                <select name="channelid" style="width:400px">
+                  <?php
+                  while($singlechannel = mysql_fetch_row($channelresult)) {
+                    $channelid = $singlechannel[0];
+                    $channeltitle = $singlechannel[1]; ?>
+                    <option name="channelid" id="channelid" value="<?php echo $channelid; ?>">
+                      <?php echo $channeltitle?>
+                    </option>
+                  <?php
+                  } ?>
+                </select>
+              </td>
+              <td>
+                <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
+                <input type="submit" value="Add" id="addToChannel" name="addToChannel" />
+              </td>
+            </tr>
+          </table>
         </form>
+        <br><br><br>
       </div> 
 
       <script type="text/javascript">
@@ -320,12 +334,14 @@
       <?php
       $queryPlaylist = "select * from playlist where username = '$username' and playlistid not in (select playlistid from playlistMedia where username = '$username' and mediaid = '$mediaid');";
       $playlistresult = mysql_query($queryPlaylist);
+      if(!$playlistresult) {
+        exit("Could not query playlist table: ".mysql_error());
+      }
       ?>
 
       <!-- PLAYLISTS -->
       <div>
         <form method="post" action="add_playlist_process.php" enctype="multipart/form-data">
-
           <table style="width:100%" cellpadding="10">
             <tr style="background:#003366" >
               <td>
@@ -457,7 +473,7 @@
                     </font>
                   </label>
                   <br>
-                  <textarea style="width:400px" rows="3" name="usercomment"> </textarea>
+                  <textarea style="width:400px" rows="3" name="usercomment"></textarea>
                   <input type="submit" value="Post"/>
                   <input type="hidden" name="mediaid" value="<?php echo $mediaid ?>" />
                 </form>

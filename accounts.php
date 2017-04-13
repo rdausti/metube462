@@ -13,7 +13,6 @@
   All Users
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 
 <!-- bar on top of screen -->
@@ -22,8 +21,7 @@
 
 <body bgcolor="#00cc66">
 
-<?php
-
+  <?php
   //gets all the usernames in the account table
   $usernamequery = "select * from account";
   $usernameresult = mysql_query($usernamequery);

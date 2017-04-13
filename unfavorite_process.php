@@ -11,7 +11,7 @@ $unfavoriteresult = mysql_query($unfavoritequery)
 
 if(isset($_POST['unfavoriteMedia'])) {
 	?>
-	<meta http-equiv="refresh" content="0; url=favorite.php">
+	<meta http-equiv="refresh" content="0; url=favorites.php">
 	<?php
 }
 else {

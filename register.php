@@ -34,6 +34,16 @@ if(isset($_POST['submit'])) {
 
 ?>
 <br><br>
+<table style="background:#003366; width:100%;" cellpadding="10">
+  <tr>
+    <td align="center">
+      <font style="color:#ffffff; font-family:verdana;">
+        Register
+      </font>
+    </td>
+  </tr>
+</table>
+<br><br>
 <form action="register.php" method="post">
   <table>
     <tr>
