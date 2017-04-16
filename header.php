@@ -14,7 +14,6 @@ include_once "function.php";
     ?>
 
 <body>
-  <form>
     <table width="100%" bgcolor="#ff007f" cellpadding="10">
       <div>
         <tr>
@@ -86,38 +85,36 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <td align="right" style="width:200px">
-            <!-- Search bar that will open searchMedia.php -->
-            <form method="post" role="serach" action="search_process.php">
+          <form method="post" role="search" action="search_process.php">
+            <td align="right" style="width:200px">
+            <!-- Search bar that will open search_process.php -->
               <div>
                 <input type="text" style="width:200px" name="searchItems" placeholder="Search">
               </div>
-            </form>
-          </td>
-          <td align="right" style="width:10px">
-            <button type="submit"> 
-              Submit 
-            </button>
-          </td>
+            </td>
+            <td align="right" style="width:10px">
+              <button type="submit"> 
+                Submit 
+              </button>
+            </td>
+          </form>
         </tr>
       </div>
     </table>
-  </form>
 
   <script type="text/javascript">
     function goToProfile() { document.getElementById("profile").submit(); }
   </script>
 
   <?php      
-  //IF THE THEY ARE NTO LOGGED IN THEN THIS IS WHAT WILL BE ON THE HEADER BAR
+  //IF THE THEY ARE NOT LOGGED IN THEN THIS IS WHAT WILL BE ON THE HEADER BAR
   //METUBE, Media, Users, Login, Register, and Search Bar
   } else { ?>
 
-  <form>
     <div>
       <table width="100%" bgcolor="#ff007f" cellpadding="10">
         <tr>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- METUBE button that takes user to browse.php -->
             <a href="browse.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -125,7 +122,7 @@ include_once "function.php";
              </font>
             </a>
           </td>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- Media button that takes the user to browse.php -->
             <a href="browse.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -133,7 +130,7 @@ include_once "function.php";
               </font>
             </a>
           </td>
-          <td align="center">
+          <td align="left" style="width:50px">
             <!-- Users button that takes the user to accounts.php -->
             <a href="accounts.php" style="text-decoration:none">
               <font style="color:#ffffff; font-family:verdana;"> 
@@ -165,23 +162,23 @@ include_once "function.php";
               </font> 
             </a>
           </td>
-          <td align="right" style="width:200px">
-            <!-- Search bar that will open searchMedia.php -->
-            <form method="post" role="search" action="search_process.php">
+          <form method="post" role="search" action="search_process.php">
+            <td align="right" style="width:200px">
+            <!-- Search bar that will open search_process.php -->
               <div>
                 <input type="text" style="width:200px" name="searchItems" placeholder="Search">
               </div>
-            </form>
-          </td>
-          <td align="right" style="width:10px">
-            <button type="submit"> 
-              Submit 
-            </button>
-          </td>
+            </td>
+            <td align="right" style="width:10px">
+              <button type="submit">
+                Submit
+              </button>
+            </td>
+          </form>
         </tr>
       </table>
     </div>
-  </form>
+
 
   <?php } ?>
 

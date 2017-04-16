@@ -27,7 +27,7 @@ if(isset($_POST['submit'])) {
 			header('Location: browse.php');
 		}
 		else if($check == 2){
-			$register_error = "Username already exists. Please user a different username.";
+			$register_error = "Username already exists. Please use a different username.";
 		}
 	}
 }

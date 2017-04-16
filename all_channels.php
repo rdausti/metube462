@@ -206,7 +206,7 @@
 			    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">
 			    				<input type="hidden" name="username" value="<?php echo $username;?>">
 			    			</form>
-			    			<a onclick="channelSubmit(<?php echo $channelid;?>)">
+			    			<a style="cursor:pointer; cursor:hand;" onclick="channelSubmit(<?php echo $channelid;?>)">
 			    				<font style="color:#ffffff; font-family:verdana;">
 				    				<?php echo $title;?>
 				    			</font>
@@ -279,7 +279,7 @@
 		    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">
 		    				<input type="hidden" name="username" value="<?php echo $username;?>">
 		    			</form>
-		    			<a onclick="channelSubmit(<?php echo $channelid;?>)">
+		    			<a style="cursor:pointer; cursor:hand;" onclick="channelSubmit(<?php echo $channelid;?>)">
 		    				<font style="color:#ffffff; font-family:verdana;">
 			    				<?php echo $title;?>
 			    			</font>

@@ -17,9 +17,13 @@ include_once "function.php";
 
 <body bgcolor="#00cc66">
 
-	<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
-    	<input type="hidden" name="username" value="<?php echo $username; ?>" />
-  	</form>
+	<?php
+	if(isset($_SESSION['username'])) { ?>
+		<form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
+    			<input type="hidden" name="username" value="<?php echo $username; ?>" />
+  		</form>
+
+	<?php } ?>
 
 	<div>
 		<br>
@@ -35,7 +39,7 @@ include_once "function.php";
 		<table style="width:100%; cellpadding:5; cellspacing:0;">
 			<?php 
 			//breaking search input into chuncks to search on
-			$searchItems = explode(' ', mysql_escape_string($_POST["searchItems"]));
+			$searchItems = explode(' ', mysql_escape_string($_POST['searchItems']));
 			$foundmediaids = [];
 			$i = 0;
 
