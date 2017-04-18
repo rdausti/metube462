@@ -50,7 +50,7 @@
       <br>
       <img src="<?php echo $path?>"/>
       <br>
-      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $result_row[4]; ?>);">
+      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank">
         <font style="color:#ffffff; font-family:verdana;">
           Click to Download
         </font>
@@ -89,7 +89,7 @@
         </script>
       </object>
 
-      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank">
         <font style="color:#ffffff; font-family:verdana;">
           Click to Download
         </font>
@@ -127,7 +127,7 @@
         </script>
       </object>
 
-      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+      <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank">
         <font style="color:#ffffff; font-family:verdana;">
           Click to Download
         </font>
@@ -151,7 +151,7 @@
           <?php echo $filename; ?>
         </td>
         <td>
-          <a href="<?php echo $path; ?>" target="_blank" onclick="javascript:saveDownload(<?php echo $path; ?>);">
+          <a href="<?php echo $path; ?>" target="_blank">
             <font style="color:#ffffff; font-family:verdana;">
               Click to Download
             </font>

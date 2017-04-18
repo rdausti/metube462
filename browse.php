@@ -10,16 +10,6 @@
 	Browse
 </title>
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-<script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
-</script>
 
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
@@ -140,7 +130,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $filenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $filenpath;?>);">
+	            <a href="<?php echo $filenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>

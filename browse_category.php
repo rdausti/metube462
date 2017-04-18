@@ -10,16 +10,6 @@
 	Browse by Category
 </title>
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-<script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
-</script>
 
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
@@ -78,7 +68,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $animalfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $animalfilenpath;?>);">
+	            <a href="<?php echo $animalfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -134,7 +124,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $carsfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $carsfilenpath;?>);">
+	            <a href="<?php echo $carsfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -190,7 +180,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $childrenfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $childrenfilenpath;?>);">
+	            <a href="<?php echo $childrenfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -246,7 +236,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $historyfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $historyfilenpath;?>);">
+	            <a href="<?php echo $historyfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -302,7 +292,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $homefilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $homefilenpath;?>);">
+	            <a href="<?php echo $homefilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -358,7 +348,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $humorfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $humorfilenpath;?>);">
+	            <a href="<?php echo $humorfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -414,7 +404,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $musicfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $musicfilenpath;?>);">
+	            <a href="<?php echo $musicfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -470,7 +460,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $newsfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $newsfilenpath;?>);">
+	            <a href="<?php echo $newsfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -526,7 +516,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $outdoorsfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $outdoorsfilenpath;?>);">
+	            <a href="<?php echo $outdoorsfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -582,7 +572,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $photofilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $photofilenpath;?>);">
+	            <a href="<?php echo $photofilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -638,7 +628,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $sciencefilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $sciencefilenpath;?>);">
+	            <a href="<?php echo $sciencefilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -694,7 +684,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $sportsfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $sportsfilenpath;?>);">
+	            <a href="<?php echo $sportsfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -750,7 +740,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $travelfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $travelfilenpath;?>);">
+	            <a href="<?php echo $travelfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -806,7 +796,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $weatherfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $weatherfilenpath;?>);">
+	            <a href="<?php echo $weatherfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -862,7 +852,7 @@
 	            </a> 
             </td>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $otherfilenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $otherrfilenpath;?>);">
+	            <a href="<?php echo $otherfilenpath;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
