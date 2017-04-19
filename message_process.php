@@ -27,7 +27,12 @@ include_once "function.php";
   <div>
   
   <?php
-  $receiver = $_POST['sendTo'];
+  if(isset($_POST['sentTo'])) {
+    $receiver = $_POST['sendTo'];
+  }
+  else {
+    $receiver = $_GET['sendTo'];
+  }
   $sender = $_SESSION['username'];
 
   if($sender == $receiver) {

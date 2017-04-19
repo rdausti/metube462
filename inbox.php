@@ -33,7 +33,6 @@ include_once "function.php";
 
   <br><br>
 
-  <div>
     <table style="background:#003366; width:100%;" cellpadding="10">
       <tr>
         <td>
@@ -90,8 +89,31 @@ include_once "function.php";
     </table>
     <br><br>
 
+    <?php 
+
+    if(isset($_POST['submit2'])) {
+      if(isset($_POST['sendTo'])) {
+        $send = $_POST['sendTo'];
+        $usernamequery = "select * from account where username = '$send'";
+        $usernameresult = mysql_query($usernamequery);
+        if (!$usernameresult){
+          exit ("counldn't query account table in Inbox". mysql_error());
+        }
+        else {
+          $rowresult = mysql_fetch_assoc($usernameresult);
+          if($rowresult == 0){
+            $senderror = "Username does not exist.";
+          }
+          else { 
+            header("Location: message_process.php?sendTo=".urlencode($send));
+          }
+        }
+      }
+    }
+    ?>
+
     <!-- creating a new message chian with a user that we haven't messaged yet -->
-    <form method="post" action="message_process.php">
+    <form method="post" action="inbox.php">
       <table>
         <tr>
           <td width="15%"> 
@@ -106,11 +128,19 @@ include_once "function.php";
             <br> 
           </td>
           <td>
-            <input type="submit" value="Send" name="readMessage">
+            <input type="submit" value="Send" name="submit2">
           </td>
         </tr>
       </table>
     </form>
-  </div>
+
+    <?php
+      if(isset($senderror)) { ?>
+        <font style="color:#ffffff; font-family:verdana;">
+        <?php echo "<div id='username_result'>".$senderror."</div>"; ?>
+        </font> 
+      <?php }
+    ?>
+
 </body>
 </html>

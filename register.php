@@ -152,10 +152,14 @@ if(isset($_POST['submit'])) {
   </table>
 </form>
 
-<?php
-  if(isset($register_error))
-   {  echo "<div id='passwd_result'> register_error:".$register_error."</div>";}
-?>
+  <?php
+  if(isset($register_error)) {   ?>
+    <font style="color:#ffffff; font-family:verdana;">
+      <?php echo "<div id='passwd_result'> register_error:".$register_error."</div>";} ?>
+    </font>
+  <?php 
+  }
+  ?>
 
 </body>
 </html>
