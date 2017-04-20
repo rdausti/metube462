@@ -2,8 +2,29 @@
 <?php
 session_start();
 include_once "function.php";
+  if(isset($_POST['submit2'])) {
+    if(isset($_POST['sendTo'])) {
+      $send = $_POST['sendTo'];
+      $usernamequery = "select * from account where username = '$send'";
+      $usernameresult = mysql_query($usernamequery);
+      if (!$usernameresult){
+        exit ("counldn't query account table in Inbox". mysql_error());
+      }
+      else {
+        $rowresult = mysql_fetch_assoc($usernameresult);
+        if($rowresult == 0){
+          $senderror = "Username does not exist.";
+        }
+        else if($send == $_SESSION['username']) {
+          $senderror = "You cannot send a message to yourself.";
+        }
+        else { 
+          header('Location: message_process.php?sendTo='.$send);
+        }
+      }
+    }
+  }
 ?>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,18 +32,13 @@ include_once "function.php";
   Messages Inbox
 </title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
-
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
-
 </head>
-
 <body bgcolor="#00cc66">
-
   <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
     <input type="hidden" name="username" value="<?php echo $username; ?>" />
   </form>
-
   <?php
   //getting the username
   $username = $_SESSION['username'];
@@ -30,9 +46,7 @@ include_once "function.php";
   $usersquery = "select * from message where receiver='$username' group by sender;";
   $userresults = mysql_query($usersquery) or exit("Could not query the message table <br> " . mysql_error());
   ?>
-
   <br><br>
-
     <table style="background:#003366; width:100%;" cellpadding="10">
       <tr>
         <td>
@@ -79,38 +93,13 @@ include_once "function.php";
               <?php } else { ?>
                 <input type="submit" style="color:red; width:200px" value="<?php echo $m_sender ?>" name="readMessage" />
                 <input type="hidden" name="sendTo" value="<?php echo $m_sender?>"/>
-              <?php } ?> 
+              <?php } ?>
             </form>
           </td>
         </tr>
-      <?php
-      }
-      ?>
+      <?php } ?>
     </table>
-    <br><br>
-
-    <?php 
-
-    if(isset($_POST['submit2'])) {
-      if(isset($_POST['sendTo'])) {
-        $send = $_POST['sendTo'];
-        $usernamequery = "select * from account where username = '$send'";
-        $usernameresult = mysql_query($usernamequery);
-        if (!$usernameresult){
-          exit ("counldn't query account table in Inbox". mysql_error());
-        }
-        else {
-          $rowresult = mysql_fetch_assoc($usernameresult);
-          if($rowresult == 0){
-            $senderror = "Username does not exist.";
-          }
-          else { 
-            header("Location: message_process.php?sendTo=".urlencode($send));
-          }
-        }
-      }
-    }
-    ?>
+    <br><br> 
 
     <!-- creating a new message chian with a user that we haven't messaged yet -->
     <form method="post" action="inbox.php">
@@ -133,7 +122,6 @@ include_once "function.php";
         </tr>
       </table>
     </form>
-
     <?php
       if(isset($senderror)) { ?>
         <font style="color:#ffffff; font-family:verdana;">
@@ -141,6 +129,5 @@ include_once "function.php";
         </font> 
       <?php }
     ?>
-
 </body>
 </html>

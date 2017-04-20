@@ -27,7 +27,7 @@ include_once "function.php";
   <div>
   
   <?php
-  if(isset($_POST['sentTo'])) {
+  if(isset($_POST['sendTo'])) {
     $receiver = $_POST['sendTo'];
   }
   else {
