@@ -12,10 +12,6 @@ if(isset($_POST['submit'])) {
 	    <form action="profile.php" method="post" id="updateMedia">
 	    	<input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
 	    </form>
-
-	    <script type="text/javascript">
-	    	document.getElementByID("updateMedia").submit();
-	    </script>
 	    <?php
 	  }
 }
@@ -444,7 +440,7 @@ $category = $rowresult[8];
     					<form method="post" id="updateMediaForm<?php echo $mediaid; ?>" action="update_media.php">
             				<input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
           				</form>
-      					<input name="submit" type="submit" value="Update" onclick="javascript:document.getElementById('updateMediaForm<?php echo $mediaid; ?>').submit(); ">
+      					<input name="submit" type="submit" value="Update">
     				</td>
 				</tr>
       		</table>

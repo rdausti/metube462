@@ -9,4 +9,4 @@ $insert = "insert into subscription(subscriptionid, channelid, username) values(
 $result = mysql_query($insert) 
 	or exit("Could not insert into subscription table: " .mysql_error());
 ?>
-<meta http-equiv="refresh" content="0;url=all_channels.php?id=<?php echo $username;?>">
+<meta http-equiv="refresh" content="0;url=individual_channel.php?id=<?php echo $channelid;?>">

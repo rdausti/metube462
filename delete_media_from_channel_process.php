@@ -2,7 +2,6 @@
 session_start();
 include_once "function.php";
 
-$username = $_SESSION['username'];
 $channelid = $_POST['channelid'];
 $mediaid = $_POST['mediaid'];
 

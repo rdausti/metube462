@@ -9,7 +9,6 @@
 <title>
 	Browse by Category
 </title>
-<script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>

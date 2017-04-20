@@ -42,6 +42,7 @@ include_once "function.php";
 			$searchItems = explode(' ', mysql_escape_string($_POST['searchItems']));
 			$foundmediaids = [];
 			$i = 0;
+			$count = 0;
 
 			foreach($searchItems as $item) {
 				$mediaquery = "select * from media where tags like '%$item%'";
@@ -54,10 +55,14 @@ include_once "function.php";
 					$mediaid = $mediaresult_row[3];
 					if(!in_array($mediaid, $foundmediaids)) {
 						$foundmediaids[$i] = $mediaid;
-						$i++;
 						$filename = $mediaresult_row[0];
+						$username = $mediaresult_row[1];
+						$type = $mediaresult_row[2];
 						$path = $mediaresult_row[4];
 						$title = $mediaresult_row[5];
+						$tags = $mediaresult_row[6];
+						$i++;
+						$count++;
 						?>
 						<tr>
 							<td width="40px">
@@ -78,6 +83,12 @@ include_once "function.php";
 					            	</font>
 					            </a> 
 				            </td>
+				            <td width="250px">
+								<font style="color:#ffffff; font-family:verdana;">
+									<?php echo $tags; ?>
+								</font>
+								</a>
+							</td>
 							<td align="center" style="background:#00994c" width="100px">
 								<a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $mediaresult_row[4];?>);">
 									<font style="color:#ffffff; font-family:verdana;">
@@ -90,10 +101,28 @@ include_once "function.php";
 				}
 			} ?>
 		</table>
+		<table>
+			<?php if( $count > 0 ) { ?>
+				<tr>
+					<td>
+						<font style="color:#ffffff; font-family:verdana;">
+							End of search results.
+						</font>
+					</td>
+				</tr>
+			<?php }
+			else { ?>
+				<tr>
+					<td>
+						<font style="color:#ffffff; font-family:verdana;">
+							No results found for your search.
+						</font>
+					</td>
+				</tr>
+			<?php } ?>
+		</table>
 		<br>
-		<font style="color:#ffffff; font-family:verdana;">
-			End of search results.
-		</font>
+		
 	</div>
 </body>
 </html>

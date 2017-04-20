@@ -42,7 +42,12 @@
 			        </font>
 	    		</td>
 	    		<td>
-	    			<input type="text" style="width:200px" name="title"> 
+	    			<input type="text" style="width:400px" name="title"> 
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    			&nbsp;
 	    		</td>
 	    	</tr>
 	    	<tr>
@@ -52,7 +57,12 @@
 			        </font>
 	    		</td>
 	    		<td>
-	    			<textarea style="width:200px" rows="3" name="description"></textarea>
+	    			<textarea style="width:400px" rows="4" name="description"></textarea>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    			&nbsp;
 	    		</td>
 	    	</tr>
 	    	<tr>

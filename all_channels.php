@@ -12,14 +12,9 @@
 
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 <script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
+	function channelSubmit(id) {
+		document.getElementById("goToChannel"+id).submit();
+	}
 </script>
 
 <!-- bar on top of screen -->
@@ -75,11 +70,6 @@
 		    		$channelid = $channelrow[0];
 		    		$title = $channelrow[1];
 		    		?>
-		    		<script type="text/javascript">
-		    			function channelSubmit(id) {
-		    				document.getElementById("goToChannel"+id).submit();
-		    			}
-		    		</script>
 		    		<tr>
 			    		<td>
 			    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">
@@ -138,11 +128,6 @@
 		    		$channelid = $subrow[1];
 		    		$title = $subrow[2];
 		    		?>
-		    		<script type="text/javascript">
-		    			function channelSubmit(id) {
-		    				document.getElementById("goToChannel"+id).submit();
-		    			}
-		    		</script>
 		    		<tr>
 			    		<td>
 			    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">
@@ -196,11 +181,6 @@
 		    		$channelid = $channelrow[0];
 		    		$title = $channelrow[1];
 		    		?>
-		    		<script type="text/javascript">
-		    			function channelSubmit(id) {
-		    				document.getElementById("goToChannel"+id).submit();
-		    			}
-		    		</script>
 		    		<tr>
 			    		<td>
 			    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">
@@ -269,11 +249,6 @@
 	    		$channelid = $channelrow[0];
 	    		$title = $channelrow[1];
 	    		?>
-	    		<script type="text/javascript">
-	    			function channelSubmit(id) {
-	    				document.getElementById("goToChannel"+id).submit();
-	    			}
-	    		</script>
 	    		<tr>
 		    		<td>
 		    			<form method="post" action="individual_channel.php?id=<?php echo $channelid;?>" id="goToChannel<?php echo $channelid;?>">

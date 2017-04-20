@@ -20,6 +20,12 @@
 		</font> 
 	</h1>
 
+	<h2 align="center">
+		<font style="color:#ffffff; font-family:verdana;"> 
+			The best media sharing site around!
+		</font> 
+	</h2>
+
 	<br><br>
 
 	<p style="position: fixed; bottom: 0; width:100%; text-align: center">

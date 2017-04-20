@@ -4,7 +4,7 @@ include_once "function.php";
 
 session_start();
 
-  $username=$_SESSION['username'];
+  $username = $_SESSION['username'];
 
   if(isset($_POST['submit'])) {
     if($_POST['password1'] != $_POST['password2']) {
@@ -16,24 +16,20 @@ session_start();
         <form action="profile.php" method="post" id="updateProfile">
           <input type="hidden" name="username" value="<?php echo $username; ?>" />
         </form>
-
-        <script type="text/javascript">
-          document.getElementByID("updateProfile").submit();
-        </script>
         <?php
       }
     }
   }
 
   $accountquery = "select * from account where username='$username'";
-  $accountresult=mysql_query($accountquery);
-  $rowresult=mysql_fetch_row($accountresult);
+  $accountresult = mysql_query($accountquery);
+  $rowresult = mysql_fetch_row($accountresult);
 
-  $password=$rowresult[1];
-  $firstname=$rowresult[2];
-  $lastname=$rowresult[3];
-  $gender=$rowresult[4];
-  $email=$rowresult[5];
+  $password = $rowresult[1];
+  $firstname = $rowresult[2];
+  $lastname = $rowresult[3];
+  $gender = $rowresult[4];
+  $email = $rowresult[5];
   ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">

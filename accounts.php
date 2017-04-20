@@ -10,7 +10,7 @@
 <head>
 
 <title>
-  All Users
+  Users
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>

@@ -10,8 +10,6 @@ include_once "function.php";
 <title>
   Message
 </title>
-<script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
-<script src="Sripts/AC_RunActiveContent.js" type="text/javascript"></script>
 
 <!-- this is the bar at the top-->
 <?php require 'header.php'; ?>
@@ -125,7 +123,7 @@ include_once "function.php";
   }
 
   $updatemessage = "update message set isItRead = 1 where receiver = '$sender' and sender = '$receiver';";
-  $messageesult = mysql_query($updatemessage) or die("Could not query message: <br />". mysql_error());
+  $messageesult = mysql_query($updatemessage) or exit("Could not query message: <br />". mysql_error());
   ?>
 </body>
 </html>

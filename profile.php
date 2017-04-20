@@ -33,28 +33,6 @@ include_once "function.php";
   $gender = $rowresult[4];
   $email = $rowresult[5];
 ?>
-
-  <script type="text/javascript">
-    function sendMessage() {
-      document.getElementById("sendMessage").submit();
-    } 
-  </script>
-
-  <form method="POST" action="message_process.php" id="sendMessage">
-    <input type="hidden" name="sendTo" value="<?php echo $username;?>"/>
-  </form>
-
-  <script type="text/javascript">
-    function userToProfile() {
-      document.getElementById("Channels").submit();
-    }
-  </script>
-
-  <form method="POST" action="all_channels.php" id="Channels">
-    <input type="hidden" name="username" value="<?php echo $username;?>"/>
-  </form>
-
-  
   <div>
   <?php
   //if there is a user logged in 
@@ -184,26 +162,20 @@ include_once "function.php";
         </font>
       </h4>
 
-      <a style="cursor:pointer; curson:hand;" onclick="userToProfile()">
-        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
-          <?php 
-          echo $username;
-          echo "'s";
-          ?>
-          Channels
-        </font>
-      </a>
-      <br>
       <br>
 
-      <a style="cursor:pointer; cursor:hand;"onclick="sendMessage()">
-        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
-          Send Message To 
-          <?php 
-            echo $username;
-          ?>
-        </font>
-      </a>
+      <form method="POST" action="all_channels.php" id="Channels">
+        <input type="submit" value="<?php echo $username;?>'s Channels">
+        <input type="hidden" name="username" value="<?php echo $username;?>"/>
+      </form>
+
+      <br>
+
+      <form method="POST" action="message_process.php" id="sendMessage">
+        <input type="submit" value="Send Message to <?php echo $username;?>">
+        <input type="hidden" name="sendTo" value="<?php echo $username;?>"/>
+      </form>
+
       <br>
     <?php
     }
@@ -327,7 +299,7 @@ include_once "function.php";
           <?php }
           } ?>
           <td style="background:#00994c; text-align:center" width="100px">
-            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $success_row[4];?>);">
+            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank">
               <font style="color:#ffffff; font-family:verdana;">
                 Download
               </font>

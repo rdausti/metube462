@@ -48,7 +48,7 @@
         </font>
       </h2>
       <br>
-      <img src="<?php echo $path?>"/>
+      <img src="<?php echo $path; ?>"/>
       <br>
       <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank">
         <font style="color:#ffffff; font-family:verdana;">
@@ -219,55 +219,40 @@
         $rows = mysql_query($favoritequery);
         $favorite = mysql_num_rows($rows); ?>
 
-        <script type="text/javascript">
-          function changeAction(type) {
-            if(type=="unfavorite") {
-              document.getElementById('button form').action="unfavorite_process.php";
-            }
-            else if (type=="favorite") {
-              document.getElementById('button form').action="favorite_process.php";
-            }
-            else if (type=="unsubscribe") {
-              document.getElementById('button form').action="unsubscribe_process.php";
-            }
-            else if (type=="subscribe") {
-              document.getElementById('button form').action="subscribe_process.php";
-            }
-          }
-        </script>
-
-        <form method="post" id="button form" action="" enctype="multipart/form-data">
-          <?php
-          if($favorite) { ?>
-            <table style="width:100%" cellpadding="10">
-              <tr style="background:#003366" >
-                <td>
-                  <font style="color:#ffffff; font-family:verdana;">
-                    On Favorites List &nbsp;
-                  </font>
-                </td>
-              </tr>
-            </table>
-            <br>
-            <input onclick="changeAction('unfavorite')" type="submit" value="Unfavorite" name="unfavorite">
+        <?php
+        if($favorite) { ?>
+          <table style="width:100%" cellpadding="10">
+            <tr style="background:#003366" >
+              <td>
+                <font style="color:#ffffff; font-family:verdana;">
+                  On Favorites List &nbsp;
+                </font>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <form method="post" action="unfavorite_process.php">
+            <input type="submit" value="Unfavorite" name="unfavorite">
             <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
-          <?php
-          }
-          else { ?>
-            <table style="width:100%" cellpadding="10">
-              <tr style="background:#003366" >
-                <td>
-                  <font style="color:#ffffff; font-family:verdana;">
-                    Not On Favorites List &nbsp;
-                  </font>
-                </td>
-              </tr>
-            </table>
-            <br>
-            <input onclick="changeAction('favorite')" type="submit" value="Favorite" name="favorite">
+          </from>
+        <?php
+        }
+        else { ?>
+          <table style="width:100%" cellpadding="10">
+            <tr style="background:#003366" >
+              <td>
+                <font style="color:#ffffff; font-family:verdana;">
+                  Not On Favorites List &nbsp;
+                </font>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <form method="post" action="favorite_process.php">
+            <input type="submit" value="Favorite" name="favorite">
             <input type="hidden" name="mediaid" value="<?php echo $mediaid?>">
-          <?php } ?>
-        </form> 
+          </form>
+        <?php } ?> 
 
         <?php
         //CHANNELS 
@@ -314,23 +299,6 @@
         <br><br><br>
       </div> 
 
-      <script type="text/javascript">
-        function checkValue(val) {
-          if(val == "add new") {
-            document.getElementById('CPTitle').style.display='block';
-            document.getElementById('CADDTitle').style.display='block';
-            document.getElementById('ADDTitle').style.display='block';
-          }
-          else {
-            document.getElementById('CPTitle').style.display='none';
-            document.getElementById('CADDTitle').style.display='none';
-            document.getElementById('ADDTitle').style.display='block';
-          }
-        }
-      </script>
-
-
-
       <?php
       $queryPlaylist = "select * from playlist where username = '$username' and playlistid not in (select playlistid from playlistMedia where username = '$username' and mediaid = '$mediaid');";
       $playlistresult = mysql_query($queryPlaylist);
@@ -341,26 +309,22 @@
 
       <!-- PLAYLISTS -->
       <div>
-        <form method="post" action="add_playlist_process.php" enctype="multipart/form-data">
+        <form method="post" action="add_media_to_playlist_process.php" enctype="multipart/form-data">
           <table style="width:100%" cellpadding="10">
             <tr style="background:#003366" >
               <td>
                 <font style="color:#ffffff; font-family:verdana;">
-                  Select Playlist: &nbsp;
+                  Playlists: &nbsp;
                 </font>
               </td>
             </tr>
           </table>
+          <br>
           <div>
             <table>
               <tr>
                 <td>
-                  <font style="color:#ffffff; font-family:verdana;">
-                    Add to Playlist: &nbsp;
-                  </font>
-                </td>
-                <td>
-                  <select onchange='checkValue(this.value);' name="ADDTitle" id="ADDTitle" style="width:400px">
+                  <select name="ADDTitle" id="ADDTitle" style="width:400px">
                     <?php
                     while($singleplaylist = mysql_fetch_row($playlistresult)) {
                       $playlisttitle = $singleplaylist[1];
@@ -377,24 +341,6 @@
                   <span>
                     <input type="submit" value="Add" id="addToPlaylist" name="addToPlaylist" />
                   </span>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div>
-            <table>
-              <tr>
-                <td width="220px">
-                  <font style="color:#ffffff; font-family:verdana;">
-                    Create and Add to Playlist:
-                  </font>
-                </td>
-                <td width="200px">
-                  <input type="text" name="CADDTitle" id="CADDTitle" style="width:200px">
-                </td>
-                <td>
-                  <input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>" />
-                  <input type="submit" value="Create and Add Playlist" id="createAndAddToPLaylist" name="createAndAddToPlaylist">
                 </td>
               </tr>
             </table>

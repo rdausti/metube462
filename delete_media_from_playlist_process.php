@@ -2,7 +2,6 @@
 session_start();
 include_once "function.php";
 
-$username = $_SESSION['username'];
 $mediaid = $_POST['mediaid'];
 $playlistid = $_POST['playlistid'];
 
@@ -12,5 +11,5 @@ $deleteplaylistmediaresult = mysql_query($deleteplaylistmediaquery)
 
 ?>
 
-<meta http-equiv="refresh" content="0;url=all_playlists.php?id=<?php echo $playlistid; ?>">
+<meta http-equiv="refresh" content="0;url=individual_playlist.php?id=<?php echo $playlistid; ?>">
 	

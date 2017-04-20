@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-<title>Register</title>
+<title>
+  Register
+</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -155,7 +157,7 @@ if(isset($_POST['submit'])) {
   <?php
   if(isset($register_error)) {   ?>
     <font style="color:#ffffff; font-family:verdana;">
-      <?php echo "<div id='passwd_result'> register_error:".$register_error."</div>";} ?>
+      <?php echo "<div id='passwd_result'> register_error:".$register_error."</div>"; ?>
     </font>
   <?php 
   }

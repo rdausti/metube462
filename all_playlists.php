@@ -10,18 +10,6 @@
 	My Playlists
 </title>
 
-<script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-<script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
-</script>
-
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
 

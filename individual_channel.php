@@ -10,18 +10,6 @@
 	Channel
 </title>
 
-<script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-<script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
-</script>
-
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
 
@@ -39,9 +27,13 @@
     $channelid = $_GET['id'];
     $channelquery = "select * from channel where channelid = '$channelid';";
     $channelresult = mysql_query($channelquery);
+    if(!$channelresult) {
+    	exit("Couldn't query channel table: ".mysql_error());
+    }
     $channelrow = mysql_fetch_row($channelresult);
     $title = $channelrow[1];
     $description = $channelrow[2];
+    $username = $channelrow[3];
    	?>
 
     <table width="100%" cellpadding="10">
@@ -70,7 +62,7 @@
   		exit("Could not query channelMedia table: " .mysql_error());
   	} ?>
 
-  	<table width="100%" cellpadding="10">
+  	<table width="100%">
   	<?php while($cmediarow = mysql_fetch_row($cmediaresult)) {
   		$mediaid = $cmediarow[2];
 
@@ -107,17 +99,17 @@
 		    if(isset($_SESSION['username'])) {
 		    	//if we are looking at our channel
 		   		if($_SESSION['username'] == $username) { ?>
-		   		<td align="right" width="100px">
-	    			<form method="post" action="delete_media_from_channel_process.php" enctype="multipart/form-data">
-	    				<input type="submit" value="Remove Media" name="delete">
-						<input type="hidden" name="mediaid" value="<?php echo $mediaid;?>">
-						<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-	    			</form>
-	    		</td>
+			   		<td align="right" width="100px">
+		    			<form method="post" action="delete_media_from_channel_process.php" enctype="multipart/form-data">
+		    				<input type="submit" value="Remove Media" name="delete">
+							<input type="hidden" name="mediaid" value="<?php echo $mediaid;?>">
+							<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
+		    			</form>
+		    		</td>
 		   		<?php } 
 		   	}?>
             <td align="center" style="background:#00994c" width="100px">
-	            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path;?>);">
+	            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank">
 	            	<font style="color:#ffffff; font-family:verdana;">
 	            		Download
 	            	</font>
@@ -127,34 +119,5 @@
 
   	<?php }
   	?>
-
-  	<?php 
-    //if we are logged in 
-    if(isset($_SESSION['username'])) {
-    	//if we are looking at our channel
-   		if($_SESSION['username'] != $username) {
-	    	$myUsername = $_SESSION['username'];
-	    	$subquery = "select * from subscription where channelid = '$channelid and username '$myUsername';";
-	    	$subresult = mysql_query($subquery);
-	    	$subrow = mysql_fetch_row($subresult);
-	    	if($subrow) { ?>
-	    		<form method="post" action="unsubscribe_process.php" enctype="multipart/form-data">
-					<input type="submit" value="Unubscribe" name="unsubscribe">
-					<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-				</form>
-	    	<?php }
-	  		else { ?>
-	    	<form method="post" action="subscribe_process.php" enctype="multipart/form-data">
-				<input type="submit" value="Subscribe" name="subscribe">
-				<input type="hidden" name="channelid" value="<?php echo $channelid;?>">
-			</form>
-			<?php } ?>
-	    <?php } ?>
-   	<?php }
-   	//if we are not logged in looking at a channel
-   	else { ?>
-
-   	<?php } ?>
-
 </body>
 </html>

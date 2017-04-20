@@ -11,12 +11,6 @@ include_once "function.php";
 		My Favorites 
 	</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-	<script type="text/javascript">
-		function saveDownload(id) {
-			$.post("media_download_process.php", {id: id}, function(message) {});
-		}
-	</script>
 
 	<?php require 'header.php'; ?>
 </head>
@@ -67,14 +61,14 @@ include_once "function.php";
 					</font>
 				</td>
 	            <td>
-		            <a href="media.php?id=<?php echo $mediaid;?>" target="_blank" style="text-decoration:none">
+		            <a href="media.php?id=<?php echo $mediaid;?>" target="_self" style="text-decoration:none">
 		            	<font style="color:#ffffff; font-family:verdana;">
 		            		<?php echo $filename;?>
 		            	</font>
 		            </a> 
 	            </td>
 	            <td align="center" style="background:#00994c" width="100px">
-		            <a href="<?php echo $filenpath;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path;?>);">
+		            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank">
 		            	<font style="color:#ffffff; font-family:verdana;">
 		            		Download
 		            	</font>

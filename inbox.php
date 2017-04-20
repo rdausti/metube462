@@ -25,16 +25,19 @@ include_once "function.php";
     }
   }
 ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Messages Inbox
 </title>
-<script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
+
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
+
 </head>
+
 <body bgcolor="#00cc66">
   <form method="post" id="usernameForm<?php echo $username; ?>" action="profile.php">
     <input type="hidden" name="username" value="<?php echo $username; ?>" />
@@ -122,6 +125,7 @@ include_once "function.php";
         </tr>
       </table>
     </form>
+    
     <?php
       if(isset($senderror)) { ?>
         <font style="color:#ffffff; font-family:verdana;">

@@ -10,18 +10,6 @@
 	Individual Playlist
 </title>
 
-<script type="text/javascript" src="js/jquery-latest.pack.js"></script>
-<script type="text/javascript">
-	function saveDownload(id)
-	{
-		$.post("media_download_process.php",
-		{ id: id, },
-		function(message) 
-	    { }
-	 	);
-	} 
-</script>
-
 <!-- bar on top of screen -->
 <?php require 'header.php'; ?>
 
@@ -36,7 +24,12 @@
 	<br><br>
 
 	<?php
-	$playlistid = $_POST['playlistid'];
+	if(isset($_POST['playlistid'])) {
+		$playlistid = $_POST['playlistid'];
+	}
+	else {
+		$playlistid = $_GET['id'];
+	}
 	$playlistquery = "select title from playlist where playlistid='$playlistid';";
 	$playlistresult = mysql_query($playlistquery);
 	$playlistrowresult = mysql_fetch_row($playlistresult);
@@ -91,7 +84,7 @@
 		            </a> 
 	            </td>
 	            <td align="center" style="background:#00994c" width="100px">
-		            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank" onclick="javascript:saveDownload(<?php echo $path;?>);">
+		            <a href="<?php echo $path;?>" style="text-decoration:none" target="_blank">
 		            	<font style="color:#ffffff; font-family:verdana;">
 		            		Download
 		            	</font>
