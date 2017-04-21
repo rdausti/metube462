@@ -1,31 +1,4 @@
 /* You can implement your own css code*/
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
 
-#passwd_result{
-	background:#FF9900;
-	color:#FFFFFF;
-	font-weight:bold;
-	margin-right:60%;
-}
 
-#upload_result{
-	background:#CC3300;
-	color:#FFFFFF;
-	font-weight:bold;
-	margin-right:60%;
-}
