@@ -48,7 +48,7 @@
         </font>
       </h2>
       <br>
-      <img src="<?php echo $path; ?>"/>
+      <img src="<?php echo $path?>"/>
       <br>
       <a href="<?php echo $path; ?>" style="text-decoration:none" target="_blank">
         <font style="color:#ffffff; font-family:verdana;">

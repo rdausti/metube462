@@ -43,13 +43,23 @@ include_once "function.php";
       
       <br><br>
 
+      <script type="text/javascript">
+       function myChannels() {
+         document.getElementById("Channels").submit();
+       }
+    </script>
+
+
       <table style="width:100%; text-align:center; background:#003366; color:#ffffff; width:100%; margin:auto;" cellpadding="10">
         <tr>
           <td>
-            <a style="text-decoration:none; cursor:pointer; cursor:hand;" onclick="userToProfile()">
+            <a style="text-decoration:none; cursor:pointer; cursor:hand;" onclick="myChannels()">
               <font style="color:#ffffff; font-family:verdana;">
                 My Channels
               </font>
+              <form method="POST" action="all_channels.php" id="Channels">
+                <input type="hidden" name="username" value="<?php echo $username;?>"/>
+              </form>
             </a>
           </td>
           <td>
@@ -231,16 +241,14 @@ include_once "function.php";
           ?>
         </font>
       </h4>
+      <br>
 
-      <a style="cursor:pointer; cursor:hand;" onclick="userToProfile()">
-        <font style="background:#00994c; color:#ffffff; font-family:verdana;">
-          <?php 
-          echo $username;
-          echo "'s";
-          ?>
-          Channels
-        </font>
-      </a>
+      <form method="POST" action="all_channels.php" id="Channels">
+        <input type="submit" value="<?php echo $username;?>'s Channels">
+        <input type="hidden" name="username" value="<?php echo $username;?>"/>
+      </form>
+
+      <br>
     <?php } ?>
     <br><br>
     <table style="background:#003366; width:100%; margin:auto; text-align:left;" cellpadding="10">
